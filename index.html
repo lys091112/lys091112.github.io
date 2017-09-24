@@ -203,7 +203,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -213,7 +213,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -260,6 +260,158 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lys091112.github.io/2017/09/24/github-with-travis-ci/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Crescent">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Crescent">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/09/24/github-with-travis-ci/" itemprop="url">Github与TravisCi的集成</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-24T23:36:17+08:00">
+                2017-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/util/" itemprop="url" rel="index">
+                    <span itemprop="name">util</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在看github上好的开源项目时，总会在README中看到类似的成功或失败的图标, 那么它们时怎么生成的呢，这就不可避免需要谈到Github的好基友<a href="https://travis-ci.org/" target="_blank" rel="external">Travis-Ci</a>, 下面就来说一下github与travis-ci的集成过程. <img src="https://travis-ci.org/lys091112/moonstar.svg?branch=master" alt="Build Status"></p>
+<p><strong>简单分为一下几步</strong></p>
+<ul>
+<li>首先需要有一个github账号，并且需要有个自己的项目（废话，没有项目谁会去弄这东西，哈哈）</li>
+<li>有github账号登录<a href="https://travis-ci.org/" target="_blank" rel="external">Travis-Ci</a></li>
+<li>在Travis-Ci中，进入 <code>Accounts</code> 界面， 在该界面上选择要进行集成测试的项目(这个按照页面的说明进行)</li>
+<li>需要在项目的根目录下建立 <code>.travis.yml</code> 文件，具体文件的书写语法可网上搜寻或参考开源项目</li>
+<li>将代码push上去后，如果一切顺利，Travis就会自动开始构建这个Maven工程。可以在Travis上看到构建结果和详细的输出</li>
+<li>如果想要添加 <code>build:passing</code> 这样的图标， 可以在REASDME.md中添加这样的一个图标  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[![Build Status](https://travis-ci.org/$&#123;accountName&#125;/$&#123;projectName&#125;.svg?branch=master)](https://travis-ci.org/$&#123;accountName&#125;/$&#123;projectName&#125;)</div><div class="line"></div><div class="line">例如我的地址为：</div><div class="line">[![Build Status](https://travis-ci.org/lys091112/moonstar.svg?branch=master)](https://travis-ci.org/lys091112/moonstar)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://lys091112.github.io/2017/08/06/hexo-blog/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -289,7 +441,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-06T22:52:37+08:00">
                 2017-08-06
@@ -310,7 +462,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -461,7 +613,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-03T23:37:32+08:00">
                 2017-08-03
@@ -593,8 +745,8 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
           
@@ -605,7 +757,7 @@
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">1</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-name">Kategorien</span>
               
             </div>
           
@@ -615,8 +767,8 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">1</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">Tags</span>
               
             </div>
           
@@ -666,7 +818,7 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
