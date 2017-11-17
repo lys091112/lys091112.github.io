@@ -83,6 +83,16 @@ deploy:
   branch: master
   email: lys091112@gmail.com
 
+# hexo 搜索
+search: 
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
+
+# 百度统计, 需要主机LeadCloud,暂时不用
+baidu_analytics: 41fc030db57d5570dd22f78997dc4a7e
+
   # Disqus #Disqus评论系统
 disqus_shortname:
 

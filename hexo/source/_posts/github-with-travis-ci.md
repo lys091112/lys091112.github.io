@@ -5,6 +5,7 @@ tags:
 - github 
 categories:
 - util
+toc: true
 ---
 
 在看github上好的开源项目时，总会在README中看到类似的成功或失败的图标, 那么它们时怎么生成的呢，这就不可避免需要谈到Github的好基友[Travis-Ci](https://travis-ci.org/), 下面就来说一下github与travis-ci的集成过程. ![Build Status](https://travis-ci.org/lys091112/moonstar.svg?branch=master)

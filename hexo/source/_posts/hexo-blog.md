@@ -5,15 +5,16 @@ tags:
 - hexo
 categories:
 - util
+toc: true
 ---
 
 首先要申请个人github账号，并以固定格式建立项目名称: {userName}.github.io, 这是github-pages 要求的项目名称。 
 
 本次安装针对于mac系统，linux类似。
 
-## 搭建
+## 1. 搭建
 
-### 依赖程序安装
+### 1.1. 依赖程序安装
 
 1. 安装node
 在控制台下执行``brew install node``
@@ -30,7 +31,7 @@ categories:
 至此，依赖安装完毕。
 
 
-### 开发流程
+### 1.2. 开发流程
 
 1. ``git clone {own-repo}`` 到本地. 
 
@@ -50,7 +51,7 @@ deploy:
 * hexo d(eploy): 部署并提交代码至GitHub中
 * hexo clean：用于清除缓存文件和已经生成的静态文件， 如果发现自己的修改对站点不生效， 那么可以尝试运行该命令
 
-### 主体更换
+### 1.3. 主体更换
 
 常用主题[Next](https://github.com/iissnan/hexo-theme-next)
 
@@ -60,4 +61,48 @@ deploy:
 theme: hexo-theme-next
 ```
 
+#### 1.3.1. Next 使用
 
+1. 修改语言设置
+```
+    在站点配置文件 _config.yml, 修改language: zh-Hans
+```
+
+2. 添加 ``about`` 页面。
+```
+    修改主题配置文件 ``_config.yml`` 文件，打开 ``menu`` 下的 about 标签，
+    执行 ``hexo new page about`` ,创建``about`` 页面
+ ```
+
+3. 添加 tag 页面
+```
+    修改主题配置文件 ``_config.yml`` 文件，打开 ``menu`` 下的 about 标签，
+    执行 ``hexo new page tags`` ,创建 ``tags``  页面
+    编辑新产生的 tags 页面，修改添加 ``type：tags``
+```
+
+## 2. 插件使用
+
+### 2.1 搜索插件
+
+1. **安装 hexo-generator-search**
+```
+    npm install hexo-generator-search --save
+```
+2. **安装 hexo-generator-searchdb**
+```
+    npm install hexo-generator-searchdb --save
+```
+3. **修改站点目录下文件 ``_config.xml``**
+```yml
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
+```
+4. **修改主题配置文件 ``_config.xml`` **
+```yml
+local_search:
+  enable: true
+```
