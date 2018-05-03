@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Crescent">
 <meta property="og:description" content="前言在java.util.concurrent包中有很多控制同步和并发的类，其中向ReentrantLock，CountDownLatch 内部实现都依赖与AbstractQueuedSynchronizer（用于控制同步的框架AQS），下面我们来分析独占模式下的原理 原理队列同步器AQS是用来构建锁和其他同步组件的基础框架，内部使用int来表示成员的同步状态，通过内置的FIFO队列来完成资源获取">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-17T03:03:17.000Z">
+<meta property="og:updated_time" content="2018-04-17T08:35:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java同步器AQS的独享模式分析">
 <meta name="twitter:description" content="前言在java.util.concurrent包中有很多控制同步和并发的类，其中向ReentrantLock，CountDownLatch 内部实现都依赖与AbstractQueuedSynchronizer（用于控制同步的框架AQS），下面我们来分析独占模式下的原理 原理队列同步器AQS是用来构建锁和其他同步组件的基础框架，内部使用int来表示成员的同步状态，通过内置的FIFO队列来完成资源获取">
@@ -465,6 +465,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/05/02/shell_first/" rel="prev" title="一个小脚本引发的点滴记录">
+                一个小脚本引发的点滴记录 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -540,7 +544,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -562,7 +566,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
