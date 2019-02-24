@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="golang," />
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="且行且珍惜">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Crescent">
-<meta property="og:url" content="http://lys091112.github.io/archives/2017/09/index.html">
+<meta name="description" content="GOPATH在 go1.11 之前，不是使用godep glide，就是直接使用go get安装第三方包 工作空间Workspaces，是Go项目的根目录，也就是GOPATH 是GO项目必备的环境变量，用来存放Go的开发代码和第三方包代码，代码需要按照一定的目录安排 mod 特性模块定义：模块根目录和其子目录的所有包构成模块，在根目录下存在 go.mod 文件，子目录会向着父目录、爷目录一直找到">
+<meta name="keywords" content="golang">
+<meta property="og:type" content="article">
+<meta property="og:title" content="go module 初步认知">
+<meta property="og:url" content="http://lys091112.github.io/2019/02/24/go-module-md/index.html">
 <meta property="og:site_name" content="Crescent">
-<meta property="og:description" content="且行且珍惜">
+<meta property="og:description" content="GOPATH在 go1.11 之前，不是使用godep glide，就是直接使用go get安装第三方包 工作空间Workspaces，是Go项目的根目录，也就是GOPATH 是GO项目必备的环境变量，用来存放Go的开发代码和第三方包代码，代码需要按照一定的目录安排 mod 特性模块定义：模块根目录和其子目录的所有包构成模块，在根目录下存在 go.mod 文件，子目录会向着父目录、爷目录一直找到">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-02-24T14:41:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Crescent">
-<meta name="twitter:description" content="且行且珍惜">
+<meta name="twitter:title" content="go module 初步认知">
+<meta name="twitter:description" content="GOPATH在 go1.11 之前，不是使用godep glide，就是直接使用go get安装第三方包 工作空间Workspaces，是Go项目的根目录，也就是GOPATH 是GO项目必备的环境变量，用来存放Go的开发代码和第三方包代码，代码需要按照一定的目录安排 mod 特性模块定义：模块根目录和其子目录的所有包构成模块，在根目录下存在 go.mod 文件，子目录会向着父目录、爷目录一直找到">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://lys091112.github.io/archives/2017/09/"/>
+  <link rel="canonical" href="http://lys091112.github.io/2019/02/24/go-module-md/"/>
 
 
 
 
 
-  <title>归档 | Crescent</title>
+  <title>go module 初步认知 | Crescent</title>
   
 
 
@@ -153,7 +155,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -281,74 +283,194 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 7 篇日志。 继续努力。
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2017">2017</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lys091112.github.io/2019/02/24/go-module-md/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Crescent">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Crescent">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017/09/24/github-with-travis-ci/" itemprop="url">
-              
-                <span itemprop="name">Github与TravisCi的集成</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">go module 初步认知</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-09-24T23:36:17+08:00"
-              content="2017-09-24" >
-          09-24
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-24T18:02:04+08:00">
+                2019-02-24
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <h2 id="GOPATH"><a href="#GOPATH" class="headerlink" title="GOPATH"></a>GOPATH</h2><p>在 go1.11 之前，不是使用godep glide，就是直接使用go get安装第三方包</p>
+<p>工作空间Workspaces，是Go项目的根目录，也就是<code>GOPATH</code> 是GO项目必备的环境变量，用来存放Go的开发代码和第三方包代码，代码需要按照一定的目录安排</p>
+<h2 id="mod-特性"><a href="#mod-特性" class="headerlink" title="mod 特性"></a>mod 特性</h2><h3 id="模块定义："><a href="#模块定义：" class="headerlink" title="模块定义："></a>模块定义：</h3><p>模块根目录和其子目录的所有包构成模块，在根目录下存在 go.mod 文件，子目录会向着父目录、爷目录一直找到 go.mod 文件</p>
+<p>环境变量 GO111MODULE 开启或关闭模块支持</p>
+<ul>
+<li>GO111MODULE=off 无模块支持，go 会从 GOPATH 和 vendor 文件夹寻找包。</li>
+<li>GO111MODULE=on 模块支持，go 会忽略 GOPATH 和 vendor 文件夹，只根据 go.mod 下载依赖。</li>
+<li>GO111MODULE=auto 在 <code>$GOPATH/src</code> 外面且根目录有 go.mod 文件时，开启模块支持</li>
+</ul>
+<p>go.mod 可以用来定义当前模块依赖和版本，也可以用来替换和排除依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">// 定义的模块名称</div><div class="line">module example.com/m</div><div class="line"></div><div class="line">// 模块依赖</div><div class="line">require (</div><div class="line">    golang.org/x/text v0.3.0</div><div class="line">    gopkg.in/yaml.v2 v2.1.0</div><div class="line">)</div><div class="line"></div><div class="line">// 有时由于网络原因，golang.org/x下的包加载不到，可以使用github.com下的包替代</div><div class="line">replace (</div><div class="line">    golang.org/x/text =&gt; github.com/golang/text v0.3.0</div><div class="line">)</div></pre></td></tr></table></figure>
+<ul>
+<li>require语句指定的依赖项模块</li>
+<li>replace语句可以替换依赖项模块</li>
+<li>exclude语句可以忽略依赖项模块</li>
+</ul>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><ul>
+<li>go mod init:初始化modules</li>
+<li>go mod download:下载modules到本地cache</li>
+<li>go mod edit:编辑go.mod文件，选项有-json、-require和-exclude，可以使用帮助go help mod edit</li>
+<li>go mod graph:以文本模式打印模块需求图</li>
+<li>go mod tidy:删除错误或者不使用的modules</li>
+<li>go mod vendor:生成vendor目录</li>
+<li>go mod verify:验证依赖是否正确</li>
+<li>go mod why：查找依赖</li>
+</ul>
+<p>go build -getmode=vendor 在开启模块支持的情况下，用这个可以退回到使用 vendor 的时代</p>
+<h3 id="go的-mod与get"><a href="#go的-mod与get" class="headerlink" title="go的 mod与get"></a>go的 mod与get</h3><pre><code>go get 命令会将文件下载到$GOPATH/src 下的相应目录
+go mod 会把文件下载到$GOPATH/pkg/mode 目录下，供其他项目共享
+</code></pre><p>go get命令也与时俱进，支持了modules</p>
+<ul>
+<li>运行 go get -u 将会升级到最新的次要版本或者修订版本</li>
+<li>运行 go get -u=patch 将会升级到最新的修订版本（比如说，将会升级到 1.0.1 版本，但不会升级到 1.1.0 版本）</li>
+<li>运行 go get package@version将会升级到指定的版本号</li>
+</ul>
+<h2 id="如何创建go-module项目"><a href="#如何创建go-module项目" class="headerlink" title="如何创建go module项目"></a>如何创建go module项目</h2><ol>
+<li>定义入口文件</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// package main 后一定要跟import 注释的内容就是模块的名称</span></div><div class="line"><span class="keyword">package</span> main <span class="comment">// import "github.com//xxx/examples/modules"</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>在项目目录下执行初始化操作</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ go mod init</div><div class="line">go: creating new go.mod: module github.com/xxx/examples/modules</div></pre></td></tr></table></figure>
+<pre><code>TIP: 不能在GOPATH 所在的目录下创建mod，不然会报异常
+</code></pre><ol>
+<li>编译执行,查看是否正常</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ go build .</div><div class="line">$ ./modules</div></pre></td></tr></table></figure>
+
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/golang/" rel="tag"># golang</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/02/shell_first/" rel="next" title="一个小脚本引发的点滴记录">
+                <i class="fa fa-chevron-left"></i> 一个小脚本引发的点滴记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -356,6 +478,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -376,8 +502,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -439,6 +574,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#GOPATH"><span class="nav-number">1.</span> <span class="nav-text">GOPATH</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mod-特性"><span class="nav-number">2.</span> <span class="nav-text">mod 特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模块定义："><span class="nav-number">2.1.</span> <span class="nav-text">模块定义：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用命令"><span class="nav-number">2.2.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#go的-mod与get"><span class="nav-number">2.3.</span> <span class="nav-text">go的 mod与get</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何创建go-module项目"><span class="nav-number">3.</span> <span class="nav-text">如何创建go module项目</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -579,6 +730,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
