@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="GOPATH在 go1.11 之前，不是使用godep glide，就是直接使用go get安装第三方包 工作空间Workspaces，是Go项目的根目录，也就是GOPATH 是GO项目必备的环境变量，用来存放Go的开发代码和第三方包代码，代码需要按照一定的目录安排 mod 特性模块定义：模块根目录和其子目录的所有包构成模块，在根目录下存在 go.mod 文件，子目录会向着父目录、爷目录一直找到">
+<meta name="description" content="GOPATH在 go1.11 之前，不是使用gdep, glide，就是直接使用go get安装第三方包工作空间Workspaces，是Go项目的根目录，也就是GOPATH 是GO项目必备的环境变量，用来存放Go的开发代码和第三方包代码，代码需要按照一定的目录安排 mod 特性模块定义：模块根目录和其子目录的所有包构成模块，在根目录下存在 go.mod 文件，子目录会向着父目录、爷目录一直找到 g">
 <meta name="keywords" content="golang">
 <meta property="og:type" content="article">
 <meta property="og:title" content="go module 初步认知">
 <meta property="og:url" content="http://lys091112.github.io/2019/02/24/go-module-md/index.html">
 <meta property="og:site_name" content="Crescent">
-<meta property="og:description" content="GOPATH在 go1.11 之前，不是使用godep glide，就是直接使用go get安装第三方包 工作空间Workspaces，是Go项目的根目录，也就是GOPATH 是GO项目必备的环境变量，用来存放Go的开发代码和第三方包代码，代码需要按照一定的目录安排 mod 特性模块定义：模块根目录和其子目录的所有包构成模块，在根目录下存在 go.mod 文件，子目录会向着父目录、爷目录一直找到">
+<meta property="og:description" content="GOPATH在 go1.11 之前，不是使用gdep, glide，就是直接使用go get安装第三方包工作空间Workspaces，是Go项目的根目录，也就是GOPATH 是GO项目必备的环境变量，用来存放Go的开发代码和第三方包代码，代码需要按照一定的目录安排 mod 特性模块定义：模块根目录和其子目录的所有包构成模块，在根目录下存在 go.mod 文件，子目录会向着父目录、爷目录一直找到 g">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-24T14:41:22.000Z">
+<meta property="og:updated_time" content="2019-02-24T14:47:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="go module 初步认知">
-<meta name="twitter:description" content="GOPATH在 go1.11 之前，不是使用godep glide，就是直接使用go get安装第三方包 工作空间Workspaces，是Go项目的根目录，也就是GOPATH 是GO项目必备的环境变量，用来存放Go的开发代码和第三方包代码，代码需要按照一定的目录安排 mod 特性模块定义：模块根目录和其子目录的所有包构成模块，在根目录下存在 go.mod 文件，子目录会向着父目录、爷目录一直找到">
+<meta name="twitter:description" content="GOPATH在 go1.11 之前，不是使用gdep, glide，就是直接使用go get安装第三方包工作空间Workspaces，是Go项目的根目录，也就是GOPATH 是GO项目必备的环境变量，用来存放Go的开发代码和第三方包代码，代码需要按照一定的目录安排 mod 特性模块定义：模块根目录和其子目录的所有包构成模块，在根目录下存在 go.mod 文件，子目录会向着父目录、爷目录一直找到 g">
 
 
 
@@ -364,8 +364,7 @@
       
 
       
-        <h2 id="GOPATH"><a href="#GOPATH" class="headerlink" title="GOPATH"></a>GOPATH</h2><p>在 go1.11 之前，不是使用godep glide，就是直接使用go get安装第三方包</p>
-<p>工作空间Workspaces，是Go项目的根目录，也就是<code>GOPATH</code> 是GO项目必备的环境变量，用来存放Go的开发代码和第三方包代码，代码需要按照一定的目录安排</p>
+        <h2 id="GOPATH"><a href="#GOPATH" class="headerlink" title="GOPATH"></a>GOPATH</h2><p>在 go1.11 之前，不是使用gdep, glide，就是直接使用go get安装第三方包<br>工作空间Workspaces，是Go项目的根目录，也就是<code>GOPATH</code> 是GO项目必备的环境变量，用来存放Go的开发代码和第三方包代码，代码需要按照一定的目录安排</p>
 <h2 id="mod-特性"><a href="#mod-特性" class="headerlink" title="mod 特性"></a>mod 特性</h2><h3 id="模块定义："><a href="#模块定义：" class="headerlink" title="模块定义："></a>模块定义：</h3><p>模块根目录和其子目录的所有包构成模块，在根目录下存在 go.mod 文件，子目录会向着父目录、爷目录一直找到 go.mod 文件</p>
 <p>环境变量 GO111MODULE 开启或关闭模块支持</p>
 <ul>
@@ -399,19 +398,14 @@ go mod 会把文件下载到$GOPATH/pkg/mode 目录下，供其他项目共享
 <li>运行 go get -u=patch 将会升级到最新的修订版本（比如说，将会升级到 1.0.1 版本，但不会升级到 1.1.0 版本）</li>
 <li>运行 go get package@version将会升级到指定的版本号</li>
 </ul>
-<h2 id="如何创建go-module项目"><a href="#如何创建go-module项目" class="headerlink" title="如何创建go module项目"></a>如何创建go module项目</h2><ol>
-<li>定义入口文件</li>
-</ol>
+<h2 id="如何创建go-module项目"><a href="#如何创建go-module项目" class="headerlink" title="如何创建go module项目"></a>如何创建go module项目</h2><p>1)  定义入口文件</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// package main 后一定要跟import 注释的内容就是模块的名称</span></div><div class="line"><span class="keyword">package</span> main <span class="comment">// import "github.com//xxx/examples/modules"</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol>
-<li>在项目目录下执行初始化操作</li>
-</ol>
+<p>2) 在项目目录下执行初始化操作</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ go mod init</div><div class="line">go: creating new go.mod: module github.com/xxx/examples/modules</div></pre></td></tr></table></figure>
 <pre><code>TIP: 不能在GOPATH 所在的目录下创建mod，不然会报异常
-</code></pre><ol>
-<li>编译执行,查看是否正常</li>
-</ol>
+</code></pre><p>3) 编译执行,查看是否正常</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ go build .</div><div class="line">$ ./modules</div></pre></td></tr></table></figure>
+<p>参考文档: <a href="https://www.mycodesmells.com/post/go-modules-example" target="_blank" rel="external">Go modules example</a></p>
 
       
     </div>
@@ -451,6 +445,10 @@ go mod 会把文件下载到$GOPATH/pkg/mode 目录下，供其他项目共享
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/05/go-pointer/" rel="prev" title="go 指针学习">
+                go 指针学习 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -527,7 +525,7 @@ go mod 会把文件下载到$GOPATH/pkg/mode 目录下，供其他项目共享
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -549,7 +547,7 @@ go mod 会把文件下载到$GOPATH/pkg/mode 目录下，供其他项目共享
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

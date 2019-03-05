@@ -3,10 +3,36 @@
   
     
     <entry>
+      <title><![CDATA[go 指针学习]]></title>
+      <url>/2019/03/05/go-pointer/</url>
+      <content type="html"><![CDATA[<p> 指针就是一个变量，用于存储另一个变量的内存地址，所有的数据都存储在内存中，<strong>变量</strong> 只是给某一块的地址起的别名。</p>
+<p>指针也是一个变量，他指向的内存存储的不仅是一个值，而且是另一个值的内存地址</p>
+<p><img src="https://github.com/lys091112/lys091112.github.io/blob/hexo/hexo/source/images/pointer.jpeg?raw=true" alt="指针图示"></p>
+<h3 id="指针声明"><a href="#指针声明" class="headerlink" title="指针声明"></a>指针声明</h3><p>指针的的语法声明如下：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// 通过符号*可以声明指针类型，t只保留类型为T的类型指针</span></div><div class="line"></div><div class="line"><span class="comment">// 任何未初始化的指针值都为nil</span></div><div class="line"><span class="keyword">var</span> t *T</div></pre></td></tr></table></figure>
+<h3 id="指针的初始化-和-输出"><a href="#指针的初始化-和-输出" class="headerlink" title="指针的初始化 和 输出"></a>指针的初始化 和 输出</h3><p>指针的初始化只需给它赋予其他变量的内存地址入口，变量的地址通过符号&amp;获取</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">10</span></div><div class="line"><span class="keyword">var</span> p *<span class="keyword">int</span> = &amp;a</div><div class="line"></div><div class="line">fmt.Println(a) <span class="comment">//10</span></div><div class="line">fmt.Println(p) <span class="comment">// a 的内存地址</span></div><div class="line">fmt.Println(*p) <span class="comment">// 10 通过*号，可以解引用，输出内存地址存储的变量值</span></div></pre></td></tr></table></figure>
+<h3 id="多重指针"><a href="#多重指针" class="headerlink" title="多重指针"></a>多重指针</h3><p>确切含义是指向指针的指针</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> a = <span class="number">10</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> p = &amp;a</div><div class="line"></div><div class="line"><span class="keyword">var</span> pp = &amp;p</div><div class="line"></div><div class="line">fmt.Println(a) <span class="comment">//10</span></div><div class="line">fmt.Println(p) <span class="comment">// a 的内存地址</span></div><div class="line">fmt.Println(*p) <span class="comment">// 10 输出a的值</span></div><div class="line">fmt.Println(&amp;p) <span class="comment">// 输出p的内存地址</span></div><div class="line">fmt.Println(pp) <span class="comment">// 输出p的内存地址</span></div><div class="line">fmt.Println(*pp) <span class="comment">//输出a的内存地址 </span></div><div class="line">fmt.Println(***pp) <span class="comment">// 10</span></div></pre></td></tr></table></figure>
+<h3 id="通过引用赋值"><a href="#通过引用赋值" class="headerlink" title="通过引用赋值"></a>通过引用赋值</h3><p>示例：<br><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="comment">// 指针的使用</span></div><div class="line">    <span class="keyword">var</span> k <span class="keyword">int</span></div><div class="line">    setK(&amp;k)</div><div class="line">    fmt.Print(k)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">setK</span><span class="params">(key *<span class="keyword">int</span>)</span></span> &#123;</div><div class="line">  *key = <span class="number">10</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><font color="red">tip: </font> go中没有指针算术运算</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> golang </tag>
+            
+            <tag> go </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[go module 初步认知]]></title>
       <url>/2019/02/24/go-module-md/</url>
-      <content type="html"><![CDATA[<h2 id="GOPATH"><a href="#GOPATH" class="headerlink" title="GOPATH"></a>GOPATH</h2><p>在 go1.11 之前，不是使用godep glide，就是直接使用go get安装第三方包</p>
-<p>工作空间Workspaces，是Go项目的根目录，也就是<code>GOPATH</code> 是GO项目必备的环境变量，用来存放Go的开发代码和第三方包代码，代码需要按照一定的目录安排</p>
+      <content type="html"><![CDATA[<h2 id="GOPATH"><a href="#GOPATH" class="headerlink" title="GOPATH"></a>GOPATH</h2><p>在 go1.11 之前，不是使用gdep, glide，就是直接使用go get安装第三方包<br>工作空间Workspaces，是Go项目的根目录，也就是<code>GOPATH</code> 是GO项目必备的环境变量，用来存放Go的开发代码和第三方包代码，代码需要按照一定的目录安排</p>
 <h2 id="mod-特性"><a href="#mod-特性" class="headerlink" title="mod 特性"></a>mod 特性</h2><h3 id="模块定义："><a href="#模块定义：" class="headerlink" title="模块定义："></a>模块定义：</h3><p>模块根目录和其子目录的所有包构成模块，在根目录下存在 go.mod 文件，子目录会向着父目录、爷目录一直找到 go.mod 文件</p>
 <p>环境变量 GO111MODULE 开启或关闭模块支持</p>
 <ul>
@@ -40,19 +66,14 @@ go mod 会把文件下载到$GOPATH/pkg/mode 目录下，供其他项目共享
 <li>运行 go get -u=patch 将会升级到最新的修订版本（比如说，将会升级到 1.0.1 版本，但不会升级到 1.1.0 版本）</li>
 <li>运行 go get package@version将会升级到指定的版本号</li>
 </ul>
-<h2 id="如何创建go-module项目"><a href="#如何创建go-module项目" class="headerlink" title="如何创建go module项目"></a>如何创建go module项目</h2><ol>
-<li>定义入口文件</li>
-</ol>
+<h2 id="如何创建go-module项目"><a href="#如何创建go-module项目" class="headerlink" title="如何创建go module项目"></a>如何创建go module项目</h2><p>1)  定义入口文件</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// package main 后一定要跟import 注释的内容就是模块的名称</span></div><div class="line"><span class="keyword">package</span> main <span class="comment">// import "github.com//xxx/examples/modules"</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol>
-<li>在项目目录下执行初始化操作</li>
-</ol>
+<p>2) 在项目目录下执行初始化操作</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ go mod init</div><div class="line">go: creating new go.mod: module github.com/xxx/examples/modules</div></pre></td></tr></table></figure>
 <pre><code>TIP: 不能在GOPATH 所在的目录下创建mod，不然会报异常
-</code></pre><ol>
-<li>编译执行,查看是否正常</li>
-</ol>
+</code></pre><p>3) 编译执行,查看是否正常</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ go build .</div><div class="line">$ ./modules</div></pre></td></tr></table></figure>
+<p>参考文档: <a href="https://www.mycodesmells.com/post/go-modules-example" target="_blank" rel="external">Go modules example</a></p>
 ]]></content>
       
         
