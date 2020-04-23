@@ -61,7 +61,7 @@ deploy:
 theme: hexo-theme-next
 ```
 
-#### 1.3.1. Next 使用
+### 1.4. Next 使用
 
 1. 修改语言设置
 ```
@@ -106,3 +106,10 @@ search:
 local_search:
   enable: true
 ```
+
+### 1.5 遇到的问题
+
+1. 命令 hexo g 执行后没有生成任何的静态文件
+
+  方式一： 通过命令 ``npm ls --depth 0`` 查询hexo缺少的依赖，然后依次安装
+  方式二： 由于本地的nap有大版本的更新，就版本的hexo依赖的npm已经消失，此时会出现版本不一致问题，因此用新版本的 hexo init命令生成新的hexo目录文件，然后将文件通过对比拷贝到原有的hexo项目文件中即可
