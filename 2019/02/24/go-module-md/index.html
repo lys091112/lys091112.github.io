@@ -80,17 +80,16 @@
 
 
 <meta name="description" content="GOPATH在 go1.11 之前，不是使用gdep, glide，就是直接使用go get安装第三方包工作空间Workspaces，是Go项目的根目录，也就是GOPATH 是GO项目必备的环境变量，用来存放Go的开发代码和第三方包代码，代码需要按照一定的目录安排 mod 特性模块定义：模块根目录和其子目录的所有包构成模块，在根目录下存在 go.mod 文件，子目录会向着父目录、爷目录一直找到 g">
-<meta name="keywords" content="golang">
 <meta property="og:type" content="article">
 <meta property="og:title" content="go module 初步认知">
 <meta property="og:url" content="http://lys091112.github.io/2019/02/24/go-module-md/index.html">
 <meta property="og:site_name" content="Crescent">
 <meta property="og:description" content="GOPATH在 go1.11 之前，不是使用gdep, glide，就是直接使用go get安装第三方包工作空间Workspaces，是Go项目的根目录，也就是GOPATH 是GO项目必备的环境变量，用来存放Go的开发代码和第三方包代码，代码需要按照一定的目录安排 mod 特性模块定义：模块根目录和其子目录的所有包构成模块，在根目录下存在 go.mod 文件，子目录会向着父目录、爷目录一直找到 g">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-24T14:47:00.000Z">
+<meta property="article:published_time" content="2019-02-24T10:02:04.000Z">
+<meta property="article:modified_time" content="2019-02-24T14:47:00.000Z">
+<meta property="article:author" content="Crescent">
+<meta property="article:tag" content="golang">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="go module 初步认知">
-<meta name="twitter:description" content="GOPATH在 go1.11 之前，不是使用gdep, glide，就是直接使用go get安装第三方包工作空间Workspaces，是Go项目的根目录，也就是GOPATH 是GO项目必备的环境变量，用来存放Go的开发代码和第三方包代码，代码需要按照一定的目录安排 mod 特性模块定义：模块根目录和其子目录的所有包构成模块，在根目录下存在 go.mod 文件，子目录会向着父目录、爷目录一直找到 g">
 
 
 
@@ -146,7 +145,7 @@
 
 
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -192,7 +191,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+          <a href="/%20" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -202,7 +201,7 @@
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+          <a href="/about/%20" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
@@ -212,7 +211,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags/%20" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -222,7 +221,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives/%20" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -373,7 +372,8 @@
 <li>GO111MODULE=auto 在 <code>$GOPATH/src</code> 外面且根目录有 go.mod 文件时，开启模块支持</li>
 </ul>
 <p>go.mod 可以用来定义当前模块依赖和版本，也可以用来替换和排除依赖</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">// 定义的模块名称</div><div class="line">module example.com/m</div><div class="line"></div><div class="line">// 模块依赖</div><div class="line">require (</div><div class="line">    golang.org/x/text v0.3.0</div><div class="line">    gopkg.in/yaml.v2 v2.1.0</div><div class="line">)</div><div class="line"></div><div class="line">// 有时由于网络原因，golang.org/x下的包加载不到，可以使用github.com下的包替代</div><div class="line">replace (</div><div class="line">    golang.org/x/text =&gt; github.com/golang/text v0.3.0</div><div class="line">)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 定义的模块名称</span><br><span class="line">module example.com&#x2F;m</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 模块依赖</span><br><span class="line">require (</span><br><span class="line">    golang.org&#x2F;x&#x2F;text v0.3.0</span><br><span class="line">    gopkg.in&#x2F;yaml.v2 v2.1.0</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 有时由于网络原因，golang.org&#x2F;x下的包加载不到，可以使用github.com下的包替代</span><br><span class="line">replace (</span><br><span class="line">    golang.org&#x2F;x&#x2F;text &#x3D;&gt; github.com&#x2F;golang&#x2F;text v0.3.0</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>require语句指定的依赖项模块</li>
 <li>replace语句可以替换依赖项模块</li>
@@ -391,21 +391,22 @@
 </ul>
 <p>go build -getmode=vendor 在开启模块支持的情况下，用这个可以退回到使用 vendor 的时代</p>
 <h3 id="go的-mod与get"><a href="#go的-mod与get" class="headerlink" title="go的 mod与get"></a>go的 mod与get</h3><pre><code>go get 命令会将文件下载到$GOPATH/src 下的相应目录
-go mod 会把文件下载到$GOPATH/pkg/mode 目录下，供其他项目共享
-</code></pre><p>go get命令也与时俱进，支持了modules</p>
+go mod 会把文件下载到$GOPATH/pkg/mode 目录下，供其他项目共享</code></pre><p>go get命令也与时俱进，支持了modules</p>
 <ul>
 <li>运行 go get -u 将会升级到最新的次要版本或者修订版本</li>
 <li>运行 go get -u=patch 将会升级到最新的修订版本（比如说，将会升级到 1.0.1 版本，但不会升级到 1.1.0 版本）</li>
 <li>运行 go get package@version将会升级到指定的版本号</li>
 </ul>
 <h2 id="如何创建go-module项目"><a href="#如何创建go-module项目" class="headerlink" title="如何创建go module项目"></a>如何创建go module项目</h2><p>1)  定义入口文件</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// package main 后一定要跟import 注释的内容就是模块的名称</span></div><div class="line"><span class="keyword">package</span> main <span class="comment">// import "github.com//xxx/examples/modules"</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package main 后一定要跟import 注释的内容就是模块的名称</span></span><br><span class="line"><span class="keyword">package</span> main <span class="comment">// import "github.com//xxx/examples/modules"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>2) 在项目目录下执行初始化操作</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ go mod init</div><div class="line">go: creating new go.mod: module github.com/xxx/examples/modules</div></pre></td></tr></table></figure>
-<pre><code>TIP: 不能在GOPATH 所在的目录下创建mod，不然会报异常
-</code></pre><p>3) 编译执行,查看是否正常</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ go build .</div><div class="line">$ ./modules</div></pre></td></tr></table></figure>
-<p>参考文档: <a href="https://www.mycodesmells.com/post/go-modules-example" target="_blank" rel="external">Go modules example</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ go mod init</span><br><span class="line">go: creating new go.mod: module github.com&#x2F;xxx&#x2F;examples&#x2F;modules</span><br></pre></td></tr></table></figure>
+<pre><code>TIP: 不能在GOPATH 所在的目录下创建mod，不然会报异常</code></pre><p>3) 编译执行,查看是否正常</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ go build .</span><br><span class="line">$ .&#x2F;modules</span><br></pre></td></tr></table></figure>
+
+
+<p>参考文档: <a href="https://www.mycodesmells.com/post/go-modules-example" target="_blank" rel="noopener">Go modules example</a></p>
 
       
     </div>
@@ -523,9 +524,9 @@ go mod 会把文件下载到$GOPATH/pkg/mode 目录下，供其他项目共享
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -547,7 +548,7 @@ go mod 会把文件下载到$GOPATH/pkg/mode 目录下，供其他项目共享
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -602,7 +603,7 @@ go mod 会把文件下载到$GOPATH/pkg/mode 目录下，供其他项目共享
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

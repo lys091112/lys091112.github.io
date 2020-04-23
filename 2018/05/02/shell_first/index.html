@@ -79,18 +79,17 @@
 
 
 
-<meta name="description" content="zsh自定义脚本在 zsh脚本中添加自定义的快捷方式, 脚本内容如下：123456789101112function dkexec &amp;#123;    if [ -z &quot;$1&quot; ]; then        echo &quot;Usage: dockerexec mysql|redis|...&quot;    else        image=`docker ps | grep $1 | awk &apos;&amp;#123;">
-<meta name="keywords" content="shell">
+<meta name="description" content="zsh自定义脚本在 zsh脚本中添加自定义的快捷方式, 脚本内容如下： 123456789101112function dkexec &amp;#123;    if [ -z &quot;$1&quot; ]; then        echo &quot;Usage: dockerexec mysql|redis|...&quot;    else        image&#x3D;&#96;docker ps | grep $1 | awk &#39;&amp;#123">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一个小脚本引发的点滴记录">
 <meta property="og:url" content="http://lys091112.github.io/2018/05/02/shell_first/index.html">
 <meta property="og:site_name" content="Crescent">
-<meta property="og:description" content="zsh自定义脚本在 zsh脚本中添加自定义的快捷方式, 脚本内容如下：123456789101112function dkexec &amp;#123;    if [ -z &quot;$1&quot; ]; then        echo &quot;Usage: dockerexec mysql|redis|...&quot;    else        image=`docker ps | grep $1 | awk &apos;&amp;#123;">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-03T08:09:46.000Z">
+<meta property="og:description" content="zsh自定义脚本在 zsh脚本中添加自定义的快捷方式, 脚本内容如下： 123456789101112function dkexec &amp;#123;    if [ -z &quot;$1&quot; ]; then        echo &quot;Usage: dockerexec mysql|redis|...&quot;    else        image&#x3D;&#96;docker ps | grep $1 | awk &#39;&amp;#123">
+<meta property="article:published_time" content="2018-05-02T08:02:25.000Z">
+<meta property="article:modified_time" content="2018-05-03T08:09:46.000Z">
+<meta property="article:author" content="Crescent">
+<meta property="article:tag" content="shell">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一个小脚本引发的点滴记录">
-<meta name="twitter:description" content="zsh自定义脚本在 zsh脚本中添加自定义的快捷方式, 脚本内容如下：123456789101112function dkexec &amp;#123;    if [ -z &quot;$1&quot; ]; then        echo &quot;Usage: dockerexec mysql|redis|...&quot;    else        image=`docker ps | grep $1 | awk &apos;&amp;#123;">
 
 
 
@@ -146,7 +145,7 @@
 
 
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -192,7 +191,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+          <a href="/%20" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -202,7 +201,7 @@
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+          <a href="/about/%20" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
@@ -212,7 +211,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags/%20" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -222,7 +221,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives/%20" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -364,27 +363,29 @@
       
 
       
-        <h2 id="zsh自定义脚本"><a href="#zsh自定义脚本" class="headerlink" title="zsh自定义脚本"></a>zsh自定义脚本</h2><p>在 zsh脚本中添加自定义的快捷方式, 脚本内容如下：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> dkexec &#123;</div><div class="line">    <span class="keyword">if</span> [ -z <span class="string">"<span class="variable">$1</span>"</span> ]; <span class="keyword">then</span></div><div class="line">        <span class="built_in">echo</span> <span class="string">"Usage: dockerexec mysql|redis|..."</span></div><div class="line">    <span class="keyword">else</span></div><div class="line">        image=`docker ps | grep <span class="variable">$1</span> | awk <span class="string">'&#123;print $1&#125;'</span>`</div><div class="line">        <span class="keyword">if</span> [ -z <span class="string">"<span class="variable">$image</span>"</span> ]; <span class="keyword">then</span></div><div class="line">            <span class="built_in">echo</span> <span class="string">"can't find image by name <span class="variable">$1</span>"</span></div><div class="line">        <span class="keyword">else</span></div><div class="line">            docker <span class="built_in">exec</span> -it <span class="variable">$&#123;image&#125;</span> bash</div><div class="line">        <span class="keyword">fi</span></div><div class="line">    <span class="keyword">fi</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        <h2 id="zsh自定义脚本"><a href="#zsh自定义脚本" class="headerlink" title="zsh自定义脚本"></a>zsh自定义脚本</h2><p>在 zsh脚本中添加自定义的快捷方式, 脚本内容如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> dkexec &#123;</span><br><span class="line">    <span class="keyword">if</span> [ -z <span class="string">"<span class="variable">$1</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"Usage: dockerexec mysql|redis|..."</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        image=`docker ps | grep <span class="variable">$1</span> | awk <span class="string">'&#123;print $1&#125;'</span>`</span><br><span class="line">        <span class="keyword">if</span> [ -z <span class="string">"<span class="variable">$image</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">            <span class="built_in">echo</span> <span class="string">"can't find image by name <span class="variable">$1</span>"</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            docker <span class="built_in">exec</span> -it <span class="variable">$&#123;image&#125;</span> bash</span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p><strong>遇到的问题：</strong></p>
 <ol>
 <li><p>判断语句与括号间需要空格分割</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if [ -z &quot;$1&quot;] 如果$1所在的位置与]之间没有空格，那么会报错误 “dkexec:[:1: &apos;]&apos; expected” </div><div class="line"></div><div class="line">如果 $1为空，那么就变成了 if[ -z ], 会把]当成一个字符，引发异常</div></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if [ -z &quot;$1&quot;] 如果$1所在的位置与]之间没有空格，那么会报错误 “dkexec:[:1: &#39;]&#39; expected” </span><br><span class="line"></span><br><span class="line">如果 $1为空，那么就变成了 if[ -z ], 会把]当成一个字符，引发异常</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>所有的if都需要相应的fi来进行闭合</p>
 </li>
 <li><p>在使用awk的print方法时，如果保证获取的结果值可以赋值给结果变量？</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">需要将语句用反引号``包括起来，才能将结果值赋予image</div></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">需要将语句用反引号&#96;&#96;包括起来，才能将结果值赋予image</span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
-<h2 id="引申的知识点"><a href="#引申的知识点" class="headerlink" title="引申的知识点"></a>引申的知识点</h2><h3 id="0-1-2-变量的含义"><a href="#0-1-2-变量的含义" class="headerlink" title=" $0, $1, $2 ...变量的含义"></a><strong> <code>$0, $1, $2 ...</code>变量的含义</strong></h3><table>
+<h2 id="引申的知识点"><a href="#引申的知识点" class="headerlink" title="引申的知识点"></a>引申的知识点</h2><h3 id="0-1-2-变量的含义"><a href="#0-1-2-变量的含义" class="headerlink" title="** $0, $1, $2 ...变量的含义**"></a>** <code>$0, $1, $2 ...</code>变量的含义**</h3><table>
 <thead>
 <tr>
 <th>变量</th>
 <th>含义</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td><code>$0</code></td>
 <td>当前脚本的文件名</td>
 </tr>
@@ -412,14 +413,12 @@
 <td><code>$$</code></td>
 <td>当前Shell进程ID。对于 Shell 脚本，就是这些脚本所在的进程ID。</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <pre><code>`$*` 和 `$@` 的区别
 
     `$*` 和 `$@` 都表示传递给函数或脚本的所有参数，不被双引号(&quot; &quot;)包含时，都以&quot;`$1`&quot; &quot;`$2`&quot; … &quot;`$n`&quot; 的形式输出所有参数
 
-    但是当它们被双引号(&quot; &quot;)包含时，&quot;`$*`&quot; 会将所有的参数作为一个整体，以&quot;`$1` `$2` … `$n`&quot;的形式输出所有参数；&quot;`$@`&quot; 会将各个参数分开，以&quot;`$1`&quot; &quot;`$2`&quot; … &quot;`$n`&quot; 的形式输出所有参数。
-</code></pre><h3 id="z-a-等判断条件的使用"><a href="#z-a-等判断条件的使用" class="headerlink" title="-z -a ...等判断条件的使用"></a><strong><code>-z -a ...</code>等判断条件的使用</strong></h3><pre><code>- 字符串判断
+    但是当它们被双引号(&quot; &quot;)包含时，&quot;`$*`&quot; 会将所有的参数作为一个整体，以&quot;`$1` `$2` … `$n`&quot;的形式输出所有参数；&quot;`$@`&quot; 会将各个参数分开，以&quot;`$1`&quot; &quot;`$2`&quot; … &quot;`$n`&quot; 的形式输出所有参数。</code></pre><h3 id="z-a-等判断条件的使用"><a href="#z-a-等判断条件的使用" class="headerlink" title="-z -a ...等判断条件的使用"></a><strong><code>-z -a ...</code>等判断条件的使用</strong></h3><pre><code>- 字符串判断
     str1 = str2　　　　　　当两个串有相同内容、长度时为真
     str1 != str2　　　　　 当串str1和str2不等时为真
     -n str1　　　　　　　 当串的长度大于0时为真(串非空)
@@ -448,8 +447,7 @@
 - 复杂逻辑判断
     -a 　 　　　　　 与
     -o　　　　　　　 或
-    !　　　　　　　　非
-</code></pre><p>附表：</p>
+    !　　　　　　　　非</code></pre><p>附表：</p>
 <table>
 <thead>
 <tr>
@@ -457,8 +455,7 @@
 <th>含义</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>[ -a FILE ]</td>
 <td>如果 FILE 存在则为真。</td>
 </tr>
@@ -582,8 +579,7 @@
 <td>[ ARG1 OP ARG2 ]</td>
 <td>“OP” is one of -eq, -ne, -lt, -le, -gt or -ge. These arithmetic binary operators return true if “ARG1” is equal to, not equal to, less than, less than or equal to, greater than, or greater than or equal to “ARG2”, respectively. “ARG1” and “ARG2” are integers.</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 
       
     </div>
@@ -701,9 +697,9 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -725,7 +721,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -760,7 +756,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#zsh自定义脚本"><span class="nav-number">1.</span> <span class="nav-text">zsh自定义脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引申的知识点"><span class="nav-number">2.</span> <span class="nav-text">引申的知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0-1-2-变量的含义"><span class="nav-number">2.1.</span> <span class="nav-text"> $0, $1, $2 ...变量的含义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#z-a-等判断条件的使用"><span class="nav-number">2.2.</span> <span class="nav-text">-z -a ...等判断条件的使用</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#zsh自定义脚本"><span class="nav-number">1.</span> <span class="nav-text">zsh自定义脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引申的知识点"><span class="nav-number">2.</span> <span class="nav-text">引申的知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0-1-2-变量的含义"><span class="nav-number">2.1.</span> <span class="nav-text">** $0, $1, $2 ...变量的含义**</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#z-a-等判断条件的使用"><span class="nav-number">2.2.</span> <span class="nav-text">-z -a ...等判断条件的使用</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -780,7 +776,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

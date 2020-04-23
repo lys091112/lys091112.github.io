@@ -85,10 +85,8 @@
 <meta property="og:url" content="http://lys091112.github.io/index.html">
 <meta property="og:site_name" content="Crescent">
 <meta property="og:description" content="且行且珍惜">
-<meta property="og:locale" content="zh-Hans">
+<meta property="article:author" content="Crescent">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Crescent">
-<meta name="twitter:description" content="且行且珍惜">
 
 
 
@@ -144,7 +142,7 @@
 
 
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -191,7 +189,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+          <a href="/%20" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -201,7 +199,7 @@
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+          <a href="/about/%20" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
@@ -211,7 +209,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags/%20" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -221,7 +219,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives/%20" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -282,6 +280,157 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lys091112.github.io/2020/04/19/%E5%8D%95%E8%B0%83%E6%A0%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Crescent">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Crescent">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/19/%E5%8D%95%E8%B0%83%E6%A0%88/" itemprop="url">单调栈</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-19T22:44:22+08:00">
+                2020-04-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          单调栈1. 定义单调栈： 栈内元素是单调递增或单调递减的栈，只在栈顶进行操作。 时间复杂度为O(n) 即所有元素只进栈一次
+性质：1). 栈具有单调性 2). 元素入栈前会把破坏单调性的元素出栈，
+2. 详细示例以及算法解析2.1 LC42 接雨水问题业务场景为只要两个柱子之间形成凹槽，那么就可以存储水，也就是只要入栈的元素高度大于栈顶元素，那么就可以存水。 这是个单调递减栈，元素小于栈顶元素才可入栈
+123456789101112131415161718192021222324252627282930313233func trapV2(height []int) int &#123;	are
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/19/%E5%8D%95%E8%B0%83%E6%A0%88/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -372,8 +521,9 @@
 
 指针声明指针的的语法声明如下：
 12345// 通过符号*可以声明指针类型，t只保留类型为T的类型指针// 任何未初始化的指针值都为nilvar t *T
+
 指针的初始化 和 输出指针的初始化只需给它赋予其他变量的内存地址入口，变量的地址通过符号&amp;获取
-123456var a = 10var p *int = &amp;afmt.Println(a) //10fmt.Println(p) // a 的
+123456var a = 10var p *int = &amp;afmt.Println(a) //10fmt.Println(p) // a 
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -630,7 +780,8 @@ GO111MODULE
       
         
           
-          zsh自定义脚本在 zsh脚本中添加自定义的快捷方式, 脚本内容如下：123456789101112function dkexec &#123;    if [ -z "$1" ]; then        echo "Usage: dockerexec mysql|redis|..."    else        image=`docker ps | grep $1 | awk '&#123;print $1&#125;'`        if [ -z "$image" ]; then            echo "can't find image by name $1"      
+          zsh自定义脚本在 zsh脚本中添加自定义的快捷方式, 脚本内容如下：
+123456789101112function dkexec &#123;    if [ -z "$1" ]; then        echo "Usage: dockerexec mysql|redis|..."    else        image=`docker ps | grep $1 | awk '&#123;print $1&#125;'`        if [ -z "$image" ]; then            echo "can't find image by name $1"     
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -952,165 +1103,11 @@ GO111MODULE
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lys091112.github.io/2017/09/24/github-with-travis-ci/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Crescent">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Crescent">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/24/github-with-travis-ci/" itemprop="url">Github与TravisCi的集成</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-24T23:36:17+08:00">
-                2017-09-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/util/" itemprop="url" rel="index">
-                    <span itemprop="name">util</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          在看github上好的开源项目时，总会在README中看到类似的成功或失败的图标, 那么它们时怎么生成的呢，这就不可避免需要谈到Github的好基友Travis-Ci, 下面就来说一下github与travis-ci的集成过程. 
-简单分为一下几步
-
-首先需要有一个github账号，并且需要有个自己的项目（废话，没有项目谁会去弄这东西，哈哈）
-有github账号登录Travis-Ci
-在Travis-Ci中，进入 Accounts 界面， 在该界面上选择要进行集成测试的项目(这个按照页面的说明进行)
-需要在项目的根目录下建立 .travis.yml 文件，具体文件的书写语法可网上搜寻或参考开源
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/09/24/github-with-travis-ci/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
   </nav>
 
 
@@ -1154,9 +1151,9 @@ GO111MODULE
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1178,7 +1175,7 @@ GO111MODULE
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1217,7 +1214,7 @@ GO111MODULE
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

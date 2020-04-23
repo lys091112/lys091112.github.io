@@ -79,18 +79,17 @@
 
 
 
-<meta name="description" content="统计字节数组中 1 的数量, 常用的算法有如下几种： 1). 遍历算法 顾名思义， 遍历二进制位中的每一位，如果该位为1，那么数量加1好处： 方法简单直接坏处： 效率较低， 例如检测大小100M的字节数组（1MB = 1024KB = 1048576B = 8388608byte)，那么需要进行大于8亿次的检查 2). 查表算法 针对于遍历算法的一个优化， 一般情况下， 对于一个特定的有限集合来说">
-<meta name="keywords" content="汉明距离，位运算">
+<meta name="description" content="统计字节数组中 1 的数量, 常用的算法有如下几种： 1). 遍历算法 顾名思义， 遍历二进制位中的每一位，如果该位为1，那么数量加1好处： 方法简单直接坏处： 效率较低， 例如检测大小100M的字节数组（1MB &#x3D; 1024KB &#x3D; 1048576B &#x3D; 8388608byte)，那么需要进行大于8亿次的检查 2). 查表算法 针对于遍历算法的一个优化， 一般情况下， 对于一个特定的有限集合来说">
 <meta property="og:type" content="article">
 <meta property="og:title" content="统计字节数组中二进制1的数量">
 <meta property="og:url" content="http://lys091112.github.io/2017/12/21/swar/index.html">
 <meta property="og:site_name" content="Crescent">
-<meta property="og:description" content="统计字节数组中 1 的数量, 常用的算法有如下几种： 1). 遍历算法 顾名思义， 遍历二进制位中的每一位，如果该位为1，那么数量加1好处： 方法简单直接坏处： 效率较低， 例如检测大小100M的字节数组（1MB = 1024KB = 1048576B = 8388608byte)，那么需要进行大于8亿次的检查 2). 查表算法 针对于遍历算法的一个优化， 一般情况下， 对于一个特定的有限集合来说">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-25T02:28:16.000Z">
+<meta property="og:description" content="统计字节数组中 1 的数量, 常用的算法有如下几种： 1). 遍历算法 顾名思义， 遍历二进制位中的每一位，如果该位为1，那么数量加1好处： 方法简单直接坏处： 效率较低， 例如检测大小100M的字节数组（1MB &#x3D; 1024KB &#x3D; 1048576B &#x3D; 8388608byte)，那么需要进行大于8亿次的检查 2). 查表算法 针对于遍历算法的一个优化， 一般情况下， 对于一个特定的有限集合来说">
+<meta property="article:published_time" content="2017-12-21T13:22:48.000Z">
+<meta property="article:modified_time" content="2017-12-25T02:28:16.000Z">
+<meta property="article:author" content="Crescent">
+<meta property="article:tag" content="汉明距离，位运算">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="统计字节数组中二进制1的数量">
-<meta name="twitter:description" content="统计字节数组中 1 的数量, 常用的算法有如下几种： 1). 遍历算法 顾名思义， 遍历二进制位中的每一位，如果该位为1，那么数量加1好处： 方法简单直接坏处： 效率较低， 例如检测大小100M的字节数组（1MB = 1024KB = 1048576B = 8388608byte)，那么需要进行大于8亿次的检查 2). 查表算法 针对于遍历算法的一个优化， 一般情况下， 对于一个特定的有限集合来说">
 
 
 
@@ -146,7 +145,7 @@
 
 
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -192,7 +191,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+          <a href="/%20" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -202,7 +201,7 @@
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+          <a href="/about/%20" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
@@ -212,7 +211,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags/%20" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -222,7 +221,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives/%20" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -395,80 +394,77 @@
 <p>因此这也算是一种空间换时间的方式，但空间的消耗在32位时已到达一个难以忍受的地步；另外由于CPU的缓存限制，创建的表越大，那么CPU缓存所保存的内容占比就越小，从而缓存不明中率提高，也直接影响了算法的性能</p>
 <p>3). <strong>variable-percision swar</strong></p>
 <p><code>汉明重量</code> 通过利用位移和位运算，可以在常数时间内计算多个字节的汉明重量，并且不需要额外的内存。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">swar</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</div><div class="line">   i = (i &amp; <span class="number">0x55555555</span>) + ((i &gt;&gt; <span class="number">1</span>) &amp; <span class="number">0x555555555</span>; </div><div class="line"></div><div class="line">   i = (i &amp; <span class="number">0x33333333</span>) + ((i &gt;&gt; <span class="number">2</span>) &amp; <span class="number">0x33333333</span>);</div><div class="line"></div><div class="line">   i = (i &amp; <span class="number">0x0F0F0F0F</span>) + ((i &gt;&gt; <span class="number">4</span>) &amp; <span class="number">0x0F0F0F0F</span>);</div><div class="line"></div><div class="line">   i = (i * <span class="number">0x01010101</span>) &gt;&gt; <span class="number">24</span>;</div><div class="line"></div><div class="line">   <span class="keyword">return</span> i;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">swar</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">   i = (i &amp; <span class="number">0x55555555</span>) + ((i &gt;&gt; <span class="number">1</span>) &amp; <span class="number">0x555555555</span>; </span><br><span class="line"></span><br><span class="line">   i = (i &amp; <span class="number">0x33333333</span>) + ((i &gt;&gt; <span class="number">2</span>) &amp; <span class="number">0x33333333</span>);</span><br><span class="line"></span><br><span class="line">   i = (i &amp; <span class="number">0x0F0F0F0F</span>) + ((i &gt;&gt; <span class="number">4</span>) &amp; <span class="number">0x0F0F0F0F</span>);</span><br><span class="line"></span><br><span class="line">   i = (i * <span class="number">0x01010101</span>) &gt;&gt; <span class="number">24</span>;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>我们以980480539(0x3A70F21B)作为计算数，</p>
 <p>第一步计算，按两位为一组</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">值</th>
-<th style="text-align:left">分组</th>
+<th align="left">值</th>
+<th align="left">分组</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:left">0x3A70F21B</td>
-<td style="text-align:left">00 11 10 10 01 11 00 00 11 11 00 10 00 01 10 11</td>
+<tbody><tr>
+<td align="left">0x3A70F21B</td>
+<td align="left">00 11 10 10 01 11 00 00 11 11 00 10 00 01 10 11</td>
 </tr>
 <tr>
-<td style="text-align:left">0x2560A116</td>
-<td style="text-align:left">00 10 01 01 01 10 00 00 10 10 00 01 00 01 01 10</td>
+<td align="left">0x2560A116</td>
+<td align="left">00 10 01 01 01 10 00 00 10 10 00 01 00 01 01 10</td>
 </tr>
 <tr>
-<td style="text-align:left">汉明重量</td>
-<td style="text-align:left">0  2  1  1  1  2  0  0  2  2  0  1  0  1  1  2</td>
+<td align="left">汉明重量</td>
+<td align="left">0  2  1  1  1  2  0  0  2  2  0  1  0  1  1  2</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>实际利用的是二进制为相加, ox55 = 0x01010101, i &amp; 0x55555555计算的是偶数位的值，然后i向右移动一位，计算的该奇数位的值，然后相加就是这两位1的个数</p>
 <p>第二步按4位一组计算</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">值</th>
-<th style="text-align:left">分组</th>
+<th align="left">值</th>
+<th align="left">分组</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:left">0x2560A116</td>
-<td style="text-align:left">0010 0101 0110 0000 1010 0001 0001 0110</td>
+<tbody><tr>
+<td align="left">0x2560A116</td>
+<td align="left">0010 0101 0110 0000 1010 0001 0001 0110</td>
 </tr>
 <tr>
-<td style="text-align:left">0x22304113</td>
-<td style="text-align:left">0010 0010 0011 0000 0100 0001 0001 0011</td>
+<td align="left">0x22304113</td>
+<td align="left">0010 0010 0011 0000 0100 0001 0001 0011</td>
 </tr>
 <tr>
-<td style="text-align:left">汉明重量</td>
-<td style="text-align:left">2    2    3    0    4    1    1    3</td>
+<td align="left">汉明重量</td>
+<td align="left">2    2    3    0    4    1    1    3</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>第三步按8位一组计算</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">值</th>
-<th style="text-align:left">分组</th>
+<th align="left">值</th>
+<th align="left">分组</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:left">0x22304113</td>
-<td style="text-align:left">00100010 00110000 01000001 00010011</td>
+<tbody><tr>
+<td align="left">0x22304113</td>
+<td align="left">00100010 00110000 01000001 00010011</td>
 </tr>
 <tr>
-<td style="text-align:left">0x4030504</td>
-<td style="text-align:left">00000100 00000011 00000101 00000100</td>
+<td align="left">0x4030504</td>
+<td align="left">00000100 00000011 00000101 00000100</td>
 </tr>
 <tr>
-<td style="text-align:left">汉明重量</td>
-<td style="text-align:left">4        3        5        4</td>
+<td align="left">汉明重量</td>
+<td align="left">4        3        5        4</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>第四步，与0x0 1010101相乘， 将位和集中到高8位</p>
-<p>实际如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">                              00000100 00000011 00000101 00000100</div><div class="line">                      0000100 00000011 00000101 00000100</div><div class="line">            00000100 00000011 00000101 00000100</div><div class="line">   00000100 00000011 00000101 00000100</div><div class="line"> &lt;---------------------------------------------&gt;</div><div class="line">                              00010000 00001100 00001001 00000100</div><div class="line"></div><div class="line">高8位是所有的8位的汉明重量之和，结果位16</div></pre></td></tr></table></figure></p>
+<p>实际如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">                              00000100 00000011 00000101 00000100</span><br><span class="line">                      0000100 00000011 00000101 00000100</span><br><span class="line">            00000100 00000011 00000101 00000100</span><br><span class="line">   00000100 00000011 00000101 00000100</span><br><span class="line"> &lt;---------------------------------------------&gt;</span><br><span class="line">                              00010000 00001100 00001001 00000100</span><br><span class="line"></span><br><span class="line">高8位是所有的8位的汉明重量之和，结果位16</span><br></pre></td></tr></table></figure>
+
 <p>可以一次计算32位字节，甚至我们可以在一次循环中调用4次swar，这样就可以一次处理128位字节</p>
 
       
@@ -487,7 +483,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/汉明距离，位运算/" rel="tag"># 汉明距离，位运算</a>
+            <a href="/tags/%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB%EF%BC%8C%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag"># 汉明距离，位运算</a>
           
         </div>
       
@@ -578,9 +574,9 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -602,7 +598,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -641,7 +637,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
