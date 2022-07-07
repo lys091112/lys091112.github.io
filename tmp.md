@@ -52,10 +52,14 @@ func Less(i, j int) bool {
 // 自定义出队方法时，POP获取队尾元素即可
 ```
 
-- [ ] leetcode 迷宫 地下城与勇士
-- [ ] CompleteFuture 总结
+- [x] leetcode 迷宫 地下城与勇士
+- [x] CompleteFuture 总结
 - [ ] Flow Api 学习理解
 
+
+- id-cnn bilsim bert crf
+https://blog.csdn.net/qq_15111861/article/details/81009636
+https://blog.csdn.net/sunhua93/article/details/102764783
 
 
 
