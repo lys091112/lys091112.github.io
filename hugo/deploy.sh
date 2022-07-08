@@ -4,9 +4,12 @@ hugo -t even
 echo "生成html文件"
 
 git checkout master
-if [ $? -ne 0]; then
-    echo "切换到master分支h失败，请检查！"
+
+if [ $? -ne 0 ]; then
+    echo "切换到master分支失败，请检查！"
     exit;
+else
+    echo "success"
 fi
 
 path=`cd .. && pwd`
