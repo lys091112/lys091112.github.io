@@ -5,7 +5,7 @@ server:
 deploy:
 	hugo -t even
 	git checkout master
-	cd ..
+	cd .. && pwd
 	rm -rf ./docs
 	mv ./hugo/public ./docs
 	git add .
