@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"lys091112.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lys091112.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="且行且珍惜">
 <meta property="og:type" content="website">
@@ -194,7 +194,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-03-12 22:18:25" itemprop="dateModified" datetime="2024-03-12T22:18:25+00:00">2024-03-12</time>
+      <time title="修改时间：2024-03-12 23:08:32" itemprop="dateModified" datetime="2024-03-12T23:08:32+00:00">2024-03-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -219,85 +219,14 @@
           <p>统计字节数组中 <code>1</code> 的数量, 常用的算法有如下几种：</p>
 <p>1). <strong>遍历算法</strong></p>
 <p>顾名思义， 遍历二进制位中的每一位，如果该位为1，那么数量加1<br>好处： 方法简单直接<br>坏处： 效率较低， 例如检测大小100M的字节数组（1MB &#x3D; 1024KB &#x3D; 1048576B &#x3D; 8388608byte)，那么<br>需要进行大于8亿次的检查</p>
-<p>2). <strong>查表算法</strong></p>
-<p>针对于遍历算法的一个优化， 一般情况下， 对于一个特定的有限集合来说，集合元素的排列方式是有限的，对于一个有限长度的位数组来说， 他表示的二进制位的排列也是有限的</p>
-<p>我们可以针对8位的二进制定制查表2^8,那么针对与100M数据来说，需要查询大约1亿次表<br>如果我们将8位提升到16位，那么表数量位2^16,(需要几百KB的字节空间), 查表所需次数为五千万次;<br>如果我们将16位提升到32位，那么表数量位2^32(需要十多个G的空间)，查询表数位两千五百万次</p>
-<p>因此这也算是一种空间换时间的方式，但空间的消耗在32位时已到达一个难以忍受的地步；另外由于CPU的缓存限制，创建的表越大，那么CPU缓存所保存的内容占比就越小，从而缓存不明中率提高，也直接影响了算法的性能</p>
-<p>3). <strong>variable-percision swar</strong></p>
-<p><code>汉明重量</code> 通过利用位移和位运算，可以在常数时间内计算多个字节的汉明重量，并且不需要额外的内存。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">swar</span><span class="params">(<span class="type">int</span> i)</span> &#123;</span><br><span class="line">   i = (i &amp; <span class="number">0x55555555</span>) + ((i &gt;&gt; <span class="number">1</span>) &amp; <span class="number">0x555555555</span>; </span><br><span class="line"></span><br><span class="line">   i = (i &amp; <span class="number">0x33333333</span>) + ((i &gt;&gt; <span class="number">2</span>) &amp; <span class="number">0x33333333</span>);</span><br><span class="line"></span><br><span class="line">   i = (i &amp; <span class="number">0x0F0F0F0F</span>) + ((i &gt;&gt; <span class="number">4</span>) &amp; <span class="number">0x0F0F0F0F</span>);</span><br><span class="line"></span><br><span class="line">   i = (i * <span class="number">0x01010101</span>) &gt;&gt; <span class="number">24</span>;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>我们以980480539(0x3A70F21B)作为计算数，</p>
-<p>第一步计算，按两位为一组</p>
-<table>
-<thead>
-<tr>
-<th align="left">值</th>
-<th align="left">分组</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">0x3A70F21B</td>
-<td align="left">00 11 10 10 01 11 00 00 11 11 00 10 00 01 10 11</td>
-</tr>
-<tr>
-<td align="left">0x2560A116</td>
-<td align="left">00 10 01 01 01 10 00 00 10 10 00 01 00 01 01 10</td>
-</tr>
-<tr>
-<td align="left">汉明重量</td>
-<td align="left">0  2  1  1  1  2  0  0  2  2  0  1  0  1  1  2</td>
-</tr>
-</tbody></table>
-<p>实际利用的是二进制为相加, ox55 &#x3D; 0x01010101, i &amp; 0x55555555计算的是偶数位的值，然后i向右移动一位，计算的该奇数位的值，然后相加就是这两位1的个数</p>
-<p>第二步按4位一组计算</p>
-<table>
-<thead>
-<tr>
-<th align="left">值</th>
-<th align="left">分组</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">0x2560A116</td>
-<td align="left">0010 0101 0110 0000 1010 0001 0001 0110</td>
-</tr>
-<tr>
-<td align="left">0x22304113</td>
-<td align="left">0010 0010 0011 0000 0100 0001 0001 0011</td>
-</tr>
-<tr>
-<td align="left">汉明重量</td>
-<td align="left">2    2    3    0    4    1    1    3</td>
-</tr>
-</tbody></table>
-<p>第三步按8位一组计算</p>
-<table>
-<thead>
-<tr>
-<th align="left">值</th>
-<th align="left">分组</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">0x22304113</td>
-<td align="left">00100010 00110000 01000001 00010011</td>
-</tr>
-<tr>
-<td align="left">0x4030504</td>
-<td align="left">00000100 00000011 00000101 00000100</td>
-</tr>
-<tr>
-<td align="left">汉明重量</td>
-<td align="left">4        3        5        4</td>
-</tr>
-</tbody></table>
-<p>第四步，与0x0 1010101相乘， 将位和集中到高8位</p>
-<p>实际如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">                              00000100 00000011 00000101 00000100</span><br><span class="line">                      0000100 00000011 00000101 00000100</span><br><span class="line">            00000100 00000011 00000101 00000100</span><br><span class="line">   00000100 00000011 00000101 00000100</span><br><span class="line"> &lt;---------------------------------------------&gt;</span><br><span class="line">                              00010000 00001100 00001001 00000100</span><br><span class="line"></span><br><span class="line">高8位是所有的8位的汉明重量之和，结果位16</span><br></pre></td></tr></table></figure>
-
-<p>可以一次计算32位字节，甚至我们可以在一次循环中调用4次swar，这样就可以一次处理128位字节</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2017/12/21/swar/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -453,7 +382,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-03-12 22:49:46" itemprop="dateModified" datetime="2024-03-12T22:49:46+00:00">2024-03-12</time>
+      <time title="修改时间：2024-03-12 23:06:50" itemprop="dateModified" datetime="2024-03-12T23:06:50+00:00">2024-03-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -488,51 +417,14 @@
 </li>
 </ol>
 <p>至此，依赖安装完毕。</p>
-<h3 id="1-2-开发流程"><a href="#1-2-开发流程" class="headerlink" title="1.2. 开发流程"></a>1.2. 开发流程</h3><ol>
-<li><p><code>git clone &#123;own-repo&#125;</code> 到本地. </p>
-</li>
-<li><p>建立博客目录,(例如： <code>mkdir blog</code>), 然后进入该目录，执行 <code>hexo init</code>， 此时目录会自动生成hexo的基础文件，编辑 <code>_config.xml</code> 文件, 修改如下部分</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:&lt;userName&gt;/&lt;userName&gt;.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<p>为了避免更换电脑或系统之后，<code>blog</code> 文件的丢失，可以将其push 到github上进行保存。 方式： 建立分支<code> git checkout -b hexo</code>, 然后将文件push 到 github上。 </p>
-</li>
-<li><p>书写文档，并发布到github。 常用命令如下：</p>
-</li>
-</ol>
-<ul>
-<li>hexo g(enerate): 生成静态文件，在public文件夹中</li>
-<li>hexo s(erver): 生成本地预览，默认情况下，网址为： <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a></li>
-<li>hexo d(eploy): 部署并提交代码至GitHub中</li>
-<li>hexo clean：用于清除缓存文件和已经生成的静态文件， 如果发现自己的修改对站点不生效， 那么可以尝试运行该命令</li>
-</ul>
-<h3 id="1-3-主体更换"><a href="#1-3-主体更换" class="headerlink" title="1.3. 主体更换"></a>1.3. 主体更换</h3><p>常用主题<a target="_blank" rel="noopener" href="https://github.com/iissnan/hexo-theme-next">Next</a></p>
-<p><code> cd &#123;your-own-blog&#125;</code>, 然后进入 <code>themes</code> 目录，将<a target="_blank" rel="noopener" href="https://github.com/iissnan/hexo-theme-next">Next</a> 克隆到该目录下，<br>然后修改<code>_config.xml</code>文件如下:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: hexo-theme-next</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-4-Next-使用"><a href="#1-4-Next-使用" class="headerlink" title="1.4. Next 使用"></a>1.4. Next 使用</h3><ol>
-<li><p>修改语言设置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在站点配置文件 _config.yml, 修改language: zh-CN</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>添加 <code>about</code> 页面。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">修改主题配置文件 ``_config.yml`` 文件，打开 ``menu`` 下的 about 标签，</span><br><span class="line">执行 ``hexo new page about`` ,创建``about`` 页面</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>添加 tag 页面</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">修改主题配置文件 ``_config.yml`` 文件，打开 ``menu`` 下的 about 标签，</span><br><span class="line">执行 ``hexo new page tags`` ,创建 ``tags``  页面</span><br><span class="line">编辑新产生的 tags 页面，修改添加 ``type：tags``</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="2-插件使用"><a href="#2-插件使用" class="headerlink" title="2. 插件使用"></a>2. 插件使用</h2><h3 id="2-1-搜索插件"><a href="#2-1-搜索插件" class="headerlink" title="2.1 搜索插件"></a>2.1 搜索插件</h3><ol>
-<li><strong>安装 hexo-generator-search</strong><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-search --save</span><br></pre></td></tr></table></figure></li>
-<li><strong>安装 hexo-generator-searchdb</strong><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure></li>
-<li><strong>修改站点目录下文件 <code>_config.xml</code></strong><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">search:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">search.xml</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">post</span></span><br><span class="line">  <span class="attr">format:</span> <span class="string">html</span></span><br><span class="line">  <span class="attr">limit:</span> <span class="number">10000</span></span><br></pre></td></tr></table></figure></li>
-<li>**修改主题配置文件 <code>_config.xml</code> **<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">local_search:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="1-5-遇到的问题"><a href="#1-5-遇到的问题" class="headerlink" title="1.5 遇到的问题"></a>1.5 遇到的问题</h3><ol>
-<li>命令 hexo g 执行后没有生成任何的静态文件</li>
-</ol>
-<p>  方式一： 通过命令 <code>npm ls --depth 0</code> 查询hexo缺少的依赖，然后依次安装<br>  方式二： 由于本地的nap有大版本的更新，就版本的hexo依赖的npm已经消失，此时会出现版本不一致问题，因此用新版本的 hexo init命令生成新的hexo目录文件，然后将文件通过对比拷贝到原有的hexo项目文件中即可</p>
-<ol start="2">
-<li>deployer not found： git</li>
-</ol>
-<p>缺少依赖包： npm install –save hexo-deployer-git</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2017/08/06/hexo-blog/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -656,7 +548,7 @@
     </span>
     <span class="author" itemprop="copyrightHolder">Crescent</span>
   </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
     </div>

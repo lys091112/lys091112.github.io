@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"lys091112.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lys091112.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="1. 欧拉回路定义从一个顶点出发沿着图的边前进，切好经过每条边一次并且回到顶点，我们称为该图是否含有欧拉回路 定理一： 连通多重图具有欧拉回路当前仅当他的每个顶点都有偶数度定理二： 连通多重图具有欧拉通路当前仅当它恰有两个奇数度顶点 在欧拉通路里，两个具有奇数度的顶点在建立一条虚拟边，那么就可以实现每个顶点都是偶数度，从而形成一条欧拉回路 1.1 欧拉路的判断 判断欧拉通路是否存在的方法   有向">
 <meta property="og:type" content="article">
@@ -27,7 +27,7 @@
 <meta property="og:description" content="1. 欧拉回路定义从一个顶点出发沿着图的边前进，切好经过每条边一次并且回到顶点，我们称为该图是否含有欧拉回路 定理一： 连通多重图具有欧拉回路当前仅当他的每个顶点都有偶数度定理二： 连通多重图具有欧拉通路当前仅当它恰有两个奇数度顶点 在欧拉通路里，两个具有奇数度的顶点在建立一条虚拟边，那么就可以实现每个顶点都是偶数度，从而形成一条欧拉回路 1.1 欧拉路的判断 判断欧拉通路是否存在的方法   有向">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-05-23T22:39:06.000Z">
-<meta property="article:modified_time" content="2024-03-12T22:18:25.242Z">
+<meta property="article:modified_time" content="2024-03-12T23:08:47.548Z">
 <meta property="article:author" content="Crescent">
 <meta property="article:tag" content="欧拉回路">
 <meta name="twitter:card" content="summary">
@@ -199,7 +199,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-03-12 22:18:25" itemprop="dateModified" datetime="2024-03-12T22:18:25+00:00">2024-03-12</time>
+      <time title="修改时间：2024-03-12 23:08:47" itemprop="dateModified" datetime="2024-03-12T23:08:47+00:00">2024-03-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -241,6 +241,7 @@
 <li>有向图：图连通，所有的顶点出度&#x3D;入度。</li>
 <li>无向图：图连通，所有顶点都是偶数度。</li>
 </ul>
+<span id="more"></span>
 <h2 id="2-路径求解"><a href="#2-路径求解" class="headerlink" title="2. 路径求解"></a>2. 路径求解</h2><p>经常会有求欧拉回路的问题， 我们可以使用欧拉回路构造的方式解决</p>
 <h3 id="2-1-欧拉回路的构造（Hierholzer算法）"><a href="#2-1-欧拉回路的构造（Hierholzer算法）" class="headerlink" title="2.1 欧拉回路的构造（Hierholzer算法）"></a>2.1 欧拉回路的构造（Hierholzer算法）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Euler(G) </span><br><span class="line">    circuit := 从 G 里任意节点开始，连续的遍历该节点的边，直到形成回路</span><br><span class="line">    H := 删除这条回路后剩余的图G</span><br><span class="line">    while H 还存在边</span><br><span class="line">    begin</span><br><span class="line">        subcircuit := 在既是H的顶点也是circuit边的端点处开始的H里找一条回路</span><br><span class="line">        H := 删除subcircuit 的所有边和孤立点之后的H</span><br><span class="line">        circute := 在circute适当顶点插入subcircuit</span><br><span class="line">    end</span><br><span class="line"></span><br><span class="line">    circute 即为所得欧拉回路</span><br></pre></td></tr></table></figure>
 <p>&#x2F;&#x2F; TODO 待补充图片示例</p>
@@ -311,7 +312,7 @@
     </span>
     <span class="author" itemprop="copyrightHolder">Crescent</span>
   </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
     </div>
