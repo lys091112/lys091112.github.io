@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lys091112.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="单调栈1. 定义单调栈： 栈内元素是单调递增或单调递减的栈，只在栈顶进行操作。 时间复杂度为O(n) 即所有元素只进栈一次 性质：1). 栈具有单调性 2). 元素入栈前会把破坏单调性的元素出栈， 2. 详细示例以及算法解析2.1 LC42 接雨水问题业务场景为只要两个柱子之间形成凹槽，那么就可以存储水，也就是只要入栈的元素高度大于栈顶元素，那么就可以存水。 这是个单调递减栈，元素小于栈顶元素才可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="单调栈">
+<meta property="og:url" content="http://lys091112.github.io/2020/04/19/%E5%8D%95%E8%B0%83%E6%A0%88/index.html">
+<meta property="og:site_name" content="Crescent">
+<meta property="og:description" content="单调栈1. 定义单调栈： 栈内元素是单调递增或单调递减的栈，只在栈顶进行操作。 时间复杂度为O(n) 即所有元素只进栈一次 性质：1). 栈具有单调性 2). 元素入栈前会把破坏单调性的元素出栈， 2. 详细示例以及算法解析2.1 LC42 接雨水问题业务场景为只要两个柱子之间形成凹槽，那么就可以存储水，也就是只要入栈的元素高度大于栈顶元素，那么就可以存水。 这是个单调递减栈，元素小于栈顶元素才可">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-19T22:44:22.000Z">
+<meta property="article:modified_time" content="2024-03-12T22:18:25.242Z">
+<meta property="article:author" content="Crescent">
+<meta property="article:tag" content="leetcode">
+<meta property="article:tag" content="stack">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://lys091112.github.io/2020/04/19/%E5%8D%95%E8%B0%83%E6%A0%88/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://lys091112.github.io/2020/04/19/%E5%8D%95%E8%B0%83%E6%A0%88/","path":"2020/04/19/单调栈/","title":"单调栈"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>单调栈 | Crescent</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Crescent</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Crescent's Footprint</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%95%E8%B0%83%E6%A0%88"><span class="nav-number">1.</span> <span class="nav-text">单调栈</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">1. 定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E8%AF%A6%E7%BB%86%E7%A4%BA%E4%BE%8B%E4%BB%A5%E5%8F%8A%E7%AE%97%E6%B3%95%E8%A7%A3%E6%9E%90"><span class="nav-number">1.2.</span> <span class="nav-text">2. 详细示例以及算法解析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-LC42-%E6%8E%A5%E9%9B%A8%E6%B0%B4%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 LC42 接雨水问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-%E6%9A%B4%E5%8A%9B%E6%B1%82%E8%A7%A3%E6%B3%95"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">2.1.1 暴力求解法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-2-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%B3%95"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">2.1.2 动态规划法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-3-%E5%8F%8C%E6%8C%87%E9%92%88%E7%A7%BB%E5%8A%A8%E6%B3%95"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">2.1.3 双指针移动法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-LC-84-%E6%9F%B1%E7%8A%B6%E5%9B%BE%E4%B8%AD%E6%9C%80%E5%A4%A7%E7%9A%84%E7%9F%A9%E5%BD%A2"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 LC 84 柱状图中最大的矩形</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-1-%E6%9A%B4%E5%8A%9B%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">2.2.1 暴力算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-2-%E5%88%86%E6%B2%BB%E6%B3%95"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">2.2.2 分治法</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Crescent</p>
+  <div class="site-description" itemprop="description">且行且珍惜</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://lys091112.github.io/2020/04/19/%E5%8D%95%E8%B0%83%E6%A0%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Crescent">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Crescent">
+      <meta itemprop="description" content="且行且珍惜">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="单调栈 | Crescent">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          单调栈
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-04-19 22:44:22" itemprop="dateCreated datePublished" datetime="2020-04-19T22:44:22+00:00">2020-04-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-03-12 22:18:25" itemprop="dateModified" datetime="2024-03-12T22:18:25+00:00">2024-03-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">algorithm</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h1><h2 id="1-定义"><a href="#1-定义" class="headerlink" title="1. 定义"></a>1. 定义</h2><p>单调栈： 栈内元素是单调递增或单调递减的栈，只在栈顶进行操作。 时间复杂度为O(n) 即所有元素只进栈一次</p>
+<p>性质：1). 栈具有单调性 2). 元素入栈前会把破坏单调性的元素出栈，</p>
+<h2 id="2-详细示例以及算法解析"><a href="#2-详细示例以及算法解析" class="headerlink" title="2. 详细示例以及算法解析"></a>2. 详细示例以及算法解析</h2><h3 id="2-1-LC42-接雨水问题"><a href="#2-1-LC42-接雨水问题" class="headerlink" title="2.1 LC42 接雨水问题"></a>2.1 LC42 接雨水问题</h3><p>业务场景为只要两个柱子之间形成凹槽，那么就可以存储水，也就是只要入栈的元素高度大于栈顶元素，那么就可以存水。 这是个单调递减栈，元素小于栈顶元素才可入栈</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">trapV2</span><span class="params">(height []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	area := <span class="number">0</span></span><br><span class="line">	stack := list.New()</span><br><span class="line">	<span class="keyword">for</span> i := <span class="keyword">range</span> height &#123;</span><br><span class="line">		<span class="keyword">for</span> &#123;</span><br><span class="line">			top := stack.Front()</span><br><span class="line">			<span class="keyword">if</span> top == <span class="literal">nil</span> || height[i] &lt; height[top.Value.(<span class="type">int</span>)] &#123;</span><br><span class="line">				<span class="keyword">break</span></span><br><span class="line">			&#125;</span><br><span class="line">			stack.Remove(top)</span><br><span class="line">			bottom := top.Value.(<span class="type">int</span>)</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 如果栈顶的元素相同，那么只保留最后一个就可以，因为他们存储的大小一致</span></span><br><span class="line">			<span class="keyword">for</span> &#123;</span><br><span class="line">				<span class="keyword">if</span> stack.Front() == <span class="literal">nil</span> || height[stack.Front().Value.(<span class="type">int</span>)] != height[bottom] &#123;</span><br><span class="line">					<span class="keyword">break</span></span><br><span class="line">				&#125;</span><br><span class="line">				stack.Remove(stack.Front())</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 将要入栈的元素大于栈顶元素 出栈并计算面积</span></span><br><span class="line">			<span class="comment">// 取两侧柱子的最小高度 - 已经计算的高度 = 剩下的可以被填充的高度</span></span><br><span class="line">			<span class="keyword">if</span> stack.Len() &gt; <span class="number">0</span> &#123;</span><br><span class="line">				top = stack.Front()</span><br><span class="line">				area += (Min(height[i], height[top.Value.(<span class="type">int</span>)]) - height[bottom]) * (i - top.Value.(<span class="type">int</span>) - <span class="number">1</span>)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		stack.PushFront(i)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> area</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-1-1-暴力求解法"><a href="#2-1-1-暴力求解法" class="headerlink" title="2.1.1 暴力求解法"></a>2.1.1 暴力求解法</h4><p>每个位置能存水的最大高度为当前注册两侧的最大值中的最小值减去当前柱子的高度，即为他能存水的高度。 伪代码为：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">for</span> i := <span class="keyword">range</span> heights &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> j = <span class="number">0</span> ; j &lt;i; i ++ &#123;</span><br><span class="line">		leftMax = max(leftMax,height[j])</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> j = i + <span class="number">1</span> ; j &lt; heights.<span class="built_in">len</span>; i ++ &#123;</span><br><span class="line">		rightMax = max(rightMax,height[j])</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	area += min(leftMax,rightMax) - height[i]</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-1-2-动态规划法"><a href="#2-1-2-动态规划法" class="headerlink" title="2.1.2 动态规划法"></a>2.1.2 动态规划法</h4><p>该算法是在暴力破解法之上的优化，从上面的处理逻辑可以看到，计算所有两侧的告诉时，有很多都被重复计算，因此可以将中间结果记录下来<br>dp[i][0] 代表i左侧的最大高度<br>dp[i][1] 代表i右侧的最大高度<br>伪代码如下：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">l := <span class="built_in">len</span>(height)</span><br><span class="line">dp := []<span class="type">int</span>&#123;&#125;</span><br><span class="line">dp[<span class="number">0</span>][<span class="number">0</span>] = height[<span class="number">0</span>] </span><br><span class="line">dp[l][<span class="number">1</span>] = dp[l]</span><br><span class="line"><span class="keyword">for</span> i := <span class="keyword">range</span> heights &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> i &gt; <span class="number">0</span> &#123;</span><br><span class="line">		dp[i][<span class="number">0</span>] = max(dp[i - <span class="number">1</span>][<span class="number">0</span>],height[i])</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> i &lt; l &#123;</span><br><span class="line">		dp[i][<span class="number">1</span>] = max(dp[i + <span class="number">1</span>][<span class="number">1</span>],height[i])</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i := <span class="keyword">range</span> heights &#123;</span><br><span class="line"></span><br><span class="line">	area += min(dp[i][<span class="number">0</span>],dp[i][<span class="number">1</span>]) - height[i]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-1-3-双指针移动法"><a href="#2-1-3-双指针移动法" class="headerlink" title="2.1.3 双指针移动法"></a>2.1.3 双指针移动法</h4><p>左右双指针移动，柱矮的移动，（如果柱高的移动，那么会造成有部分没有计算，因为存水的面积是有柱子的高度决定的）。</p>
+<p>由 area &#x3D; min(dp[i][0] , dp[i][1]) - height[i] 得：</p>
+<p>area &#x3D; min(leftMax,rightMax) - height[i] , 所以让柱矮的移动，然后不断比对取两侧比较矮的</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">left, right = <span class="number">0</span>, <span class="built_in">len</span>(heights)</span><br><span class="line"><span class="keyword">for</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> left &gt;= right &#123;</span><br><span class="line">		<span class="keyword">break</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> leftMax &lt; rightMax &#123;</span><br><span class="line">		leftMax = max(leftMax, heights[left])</span><br><span class="line">		area += leftMax - height[left]</span><br><span class="line">		left++</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		rightMax = max(rightMax, height[right])</span><br><span class="line">		area += rightMax - heights[right]</span><br><span class="line">		right--</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> area;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-LC-84-柱状图中最大的矩形"><a href="#2-2-LC-84-柱状图中最大的矩形" class="headerlink" title="2.2 LC 84 柱状图中最大的矩形"></a>2.2 LC 84 柱状图中最大的矩形</h3><p>同接雨水问题相关，如果入栈的元素小于栈顶元素，那么栈顶出栈并迭代计算当前的最大面积。 只有当元素大于栈顶元素时才入栈。<br>如果栈为空，那么代表元素的左侧都大于改元素，那么此时的左侧面积为 height[index] * i</p>
+<p>否则左侧组成的面积大小为 height[index] * (i - left_i - 1), 原因： 左侧和右侧的元素一定都小于当前的height[index] 但是这俩之间的元素值一定大于当前的height[index],因为比它大的都出栈了</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">largestRectangleArea</span><span class="params">(heights []<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 末尾追加0，是因为如果是生序的话，保证最终能有个值兜底去计算其他的值</span></span><br><span class="line">	heights = <span class="built_in">append</span>(heights, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">	area := <span class="number">0</span></span><br><span class="line">	stack := list.New()</span><br><span class="line">	<span class="keyword">for</span> i := <span class="keyword">range</span> heights &#123;</span><br><span class="line">		<span class="keyword">for</span> &#123;</span><br><span class="line">			<span class="comment">// 保持栈顶小于当前元素</span></span><br><span class="line">			<span class="comment">// 如果不小于，那么移除栈顶，计算当前高度的最大面积，否则直接入栈，因为添加了末尾元素0，所以即便是连续的递增，最终也会被计算</span></span><br><span class="line">			f := stack.Front()</span><br><span class="line">			<span class="keyword">if</span> f == <span class="literal">nil</span> || heights[f.Value.(<span class="type">int</span>)] &lt; heights[i] &#123;</span><br><span class="line">				<span class="keyword">break</span></span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			tArea := <span class="number">0</span></span><br><span class="line">			stack.Remove(f)</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 获取当前的栈顶元素，来求解以当前为高度的元素的跨度</span></span><br><span class="line">			top := f.Value.(<span class="type">int</span>)</span><br><span class="line">			<span class="keyword">if</span> stack.Len() == <span class="number">0</span> &#123;</span><br><span class="line">				tArea = heights[top] * i</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				tArea = heights[top] * (i - stack.Front().Value.(<span class="type">int</span>) - <span class="number">1</span>)</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> tArea &gt; area &#123;</span><br><span class="line">				area = tArea</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		stack.PushFront(i)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> area</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-1-暴力算法"><a href="#2-2-1-暴力算法" class="headerlink" title="2.2.1 暴力算法"></a>2.2.1 暴力算法</h4><p>计算以每个柱子为高，他能向外扩展的最大长度组成的矩形即为该柱可以形成的最大面积</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i := <span class="keyword">range</span> heights &#123;</span><br><span class="line"></span><br><span class="line">	left = i</span><br><span class="line">	<span class="keyword">for</span> j = i - <span class="number">1</span>; j &gt;= <span class="number">0</span> ; j-- &#123;</span><br><span class="line">		<span class="keyword">if</span> height[j] &gt; heights[i] &#123;</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">		&#125;</span><br><span class="line">		left = j</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	right = i</span><br><span class="line">	<span class="keyword">for</span> j = i + <span class="number">1</span>; j &lt;= <span class="built_in">len</span>(heights) ; j++ &#123;</span><br><span class="line">		<span class="keyword">if</span> height[j] &lt; heights[i] &#123;</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">		&#125;</span><br><span class="line">		right = j</span><br><span class="line">	&#125;</span><br><span class="line">	area = (right - left + <span class="number">1</span>) * height[i]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-2-分治法"><a href="#2-2-2-分治法" class="headerlink" title="2.2.2 分治法"></a>2.2.2 分治法</h4><p>分界点： 面积的大小是由所有柱子中最矮的决定的，所以我们以最矮的柱子为分界点</p>
+<p>最大面积的分布又3种情况 1） 在左侧 2）在中间，通过中间联通两侧 3）在右侧</p>
+<p>可以用分治的算法进行计算， 时间复杂度:<br>$$T(n) &#x3D; 2(\frac {n} {2}) + O(logn) &#x3D; O(nlogn)$$</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">device(heigths []<span class="type">int</span>, left,right <span class="type">int</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> left &gt; right &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	middle = findMin(heigths,left,right)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> max((right-left + <span class="number">1</span>) * heigths[middle], device(heigths,left,middle - <span class="number">1</span>), device(middle+<span class="number">1</span>,right))</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> device(heigths,<span class="number">0</span>,<span class="built_in">len</span>(heigths)<span class="number">-1</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+              <a href="/tags/stack/" rel="tag"># stack</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/03/05/go-pointer/" rel="prev" title="go 指针学习">
+                  <i class="fa fa-angle-left"></i> go 指针学习
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/04/26/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/" rel="next" title="回溯算法">
+                  回溯算法 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Crescent</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

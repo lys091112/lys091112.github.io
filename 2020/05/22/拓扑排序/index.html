@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lys091112.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="1. 拓扑排序定义按照wiki的解释，在图论中，由一个有向无环图的顶点组成的序列，当且仅当满足下列条件时，才能称为该图的一个拓扑排序  序列中包含每个顶点，且每个顶点只出现一次； 若A在序列中排在B的前面，则在图中不存在从B到A的路径。  2. 算法实现2.1 卡恩算法算法步骤：   从 DAG 图中选择一个 没有前驱（即入度为0）的顶点并输出。 从图中删除该顶点和所有以它为起点的有向边。 重复">
+<meta property="og:type" content="article">
+<meta property="og:title" content="拓扑排序">
+<meta property="og:url" content="http://lys091112.github.io/2020/05/22/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/index.html">
+<meta property="og:site_name" content="Crescent">
+<meta property="og:description" content="1. 拓扑排序定义按照wiki的解释，在图论中，由一个有向无环图的顶点组成的序列，当且仅当满足下列条件时，才能称为该图的一个拓扑排序  序列中包含每个顶点，且每个顶点只出现一次； 若A在序列中排在B的前面，则在图中不存在从B到A的路径。  2. 算法实现2.1 卡恩算法算法步骤：   从 DAG 图中选择一个 没有前驱（即入度为0）的顶点并输出。 从图中删除该顶点和所有以它为起点的有向边。 重复">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-22T23:07:24.000Z">
+<meta property="article:modified_time" content="2024-03-12T22:18:25.242Z">
+<meta property="article:author" content="Crescent">
+<meta property="article:tag" content="leetcode">
+<meta property="article:tag" content="课程表">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://lys091112.github.io/2020/05/22/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://lys091112.github.io/2020/05/22/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/","path":"2020/05/22/拓扑排序/","title":"拓扑排序"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>拓扑排序 | Crescent</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Crescent</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Crescent's Footprint</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%E5%AE%9A%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">1. 拓扑排序定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text">2. 算法实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%8D%A1%E6%81%A9%E7%AE%97%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 卡恩算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E6%B7%B1%E5%BA%A6%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 深度遍历算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%AE%9E%E4%BE%8B"><span class="nav-number">3.</span> <span class="nav-text">3. 实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%8D%A1%E6%81%A9%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 卡恩算法实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E6%B7%B1%E5%BA%A6%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 深度遍历算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">4.</span> <span class="nav-text">4. 参考链接</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Crescent</p>
+  <div class="site-description" itemprop="description">且行且珍惜</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://lys091112.github.io/2020/05/22/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Crescent">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Crescent">
+      <meta itemprop="description" content="且行且珍惜">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="拓扑排序 | Crescent">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          拓扑排序
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-05-22 23:07:24" itemprop="dateCreated datePublished" datetime="2020-05-22T23:07:24+00:00">2020-05-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-03-12 22:18:25" itemprop="dateModified" datetime="2024-03-12T22:18:25+00:00">2024-03-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">algorithm</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="1-拓扑排序定义"><a href="#1-拓扑排序定义" class="headerlink" title="1. 拓扑排序定义"></a>1. 拓扑排序定义</h2><p>按照wiki的解释，在图论中，由一个有向无环图的顶点组成的序列，当且仅当满足下列条件时，才能称为该图的一个拓扑排序</p>
+<ul>
+<li>序列中包含每个顶点，且每个顶点只出现一次；</li>
+<li>若A在序列中排在B的前面，则在图中不存在从B到A的路径。</li>
+</ul>
+<h2 id="2-算法实现"><a href="#2-算法实现" class="headerlink" title="2. 算法实现"></a>2. 算法实现</h2><h3 id="2-1-卡恩算法"><a href="#2-1-卡恩算法" class="headerlink" title="2.1 卡恩算法"></a>2.1 卡恩算法</h3><p>算法步骤： </p>
+<ol>
+<li>从 DAG 图中选择一个 没有前驱（即入度为0）的顶点并输出。</li>
+<li>从图中删除该顶点和所有以它为起点的有向边。</li>
+<li>重复 1 和 2 直到当前的 DAG 图为空或当前图中不存在无前驱的顶点为止。后一种情况说明有向图中必然存在环</li>
+</ol>
+<p>伪代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">L ← 包含已排序的元素的列表，目前为空</span><br><span class="line">S ← 入度为零的节点的集合</span><br><span class="line">当 S 非空时：</span><br><span class="line">    将节点n从S移走</span><br><span class="line">    将n加到L尾部</span><br><span class="line">    选出任意起点为n的边e = (n,m)，移除e。如m没有其它入边(即入度为0)，则将m加入S。</span><br><span class="line">    重复上一步。</span><br><span class="line"></span><br><span class="line">如图中有剩余的边则：</span><br><span class="line">    return error   (图中至少有一个环)</span><br><span class="line">否则： </span><br><span class="line">    return L   (L为图的拓扑排序)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-深度遍历算法"><a href="#2-2-深度遍历算法" class="headerlink" title="2.2 深度遍历算法"></a>2.2 深度遍历算法</h3><p>算法伪代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">L ← 包含已排序的元素的列表，目前为空</span><br><span class="line">当图中存在未永久标记的节点时：</span><br><span class="line">    选出任何未永久标记的节点n</span><br><span class="line">    visit(n)</span><br><span class="line"></span><br><span class="line">function visit(节点 n)</span><br><span class="line">    如n已有永久标记：</span><br><span class="line">        return 重新选择节点遍历</span><br><span class="line">    如n已有临时标记：</span><br><span class="line">        stop   (不是定向无环图,即有环，需停止)</span><br><span class="line">    将n临时标记</span><br><span class="line">    选出以n为起点的边(n,m)，visit(m)</span><br><span class="line">    重复上一步</span><br><span class="line">    去掉n的临时标记</span><br><span class="line">    将n永久标记</span><br><span class="line">    将n加到L的起始</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-实例"><a href="#3-实例" class="headerlink" title="3. 实例"></a>3. 实例</h2><h3 id="3-1-卡恩算法实现"><a href="#3-1-卡恩算法实现" class="headerlink" title="3.1 卡恩算法实现"></a>3.1 卡恩算法实现</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findOrder</span><span class="params">(numCourses <span class="type">int</span>, prerequisites [][]<span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">	<span class="comment">// 统计各节点的入度</span></span><br><span class="line">	<span class="comment">// 从第一个入度为0的节点出发</span></span><br><span class="line">	<span class="comment">// 查找它的下一个节点，并删除依赖关系</span></span><br><span class="line">    <span class="comment">// 从新找入度为0的节点知道入度为0的节点为空  如果剩余的节点不为空说明有环</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 记录当前各点的入度</span></span><br><span class="line">	degree := <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>&#123;&#125;</span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> prerequisites &#123;</span><br><span class="line">		degree[v[<span class="number">0</span>]]++</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 入度为0的点入栈</span></span><br><span class="line">	stack := list.New()</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; numCourses; i++ &#123;</span><br><span class="line">		<span class="keyword">if</span> degree[i] == <span class="number">0</span> &#123;</span><br><span class="line">			stack.PushFront(i)</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 遍历栈并处理</span></span><br><span class="line">	result := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>)</span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> stack.Len() &lt;= <span class="number">0</span> &#123;</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">		&#125;</span><br><span class="line">		top := stack.Front()</span><br><span class="line">		stack.Remove(top)</span><br><span class="line">		topValue := top.Value.(<span class="type">int</span>)</span><br><span class="line">		result = <span class="built_in">append</span>(result, topValue)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 查找前驱节点是栈节点的值，入度减一</span></span><br><span class="line">        <span class="comment">// TODO 实际上这里应该删除入度已经为0的点，不再进行遍历</span></span><br><span class="line">		<span class="keyword">for</span> _, v := <span class="keyword">range</span> prerequisites &#123;</span><br><span class="line">			<span class="keyword">if</span> v[<span class="number">1</span>] == topValue &#123;</span><br><span class="line">				degree[v[<span class="number">0</span>]]--</span><br><span class="line">				<span class="keyword">if</span> degree[v[<span class="number">0</span>]] == <span class="number">0</span> &#123;</span><br><span class="line">					stack.PushFront(v[<span class="number">0</span>])</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(result) != numCourses &#123;</span><br><span class="line">		<span class="keyword">return</span> []<span class="type">int</span>&#123;&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-深度遍历算法"><a href="#3-2-深度遍历算法" class="headerlink" title="3.2 深度遍历算法"></a>3.2 深度遍历算法</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// DFS</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findOrderV2</span><span class="params">(numCourses <span class="type">int</span>, prerequisites [][]<span class="type">int</span>)</span></span> []<span class="type">int</span> &#123;</span><br><span class="line">	<span class="comment">// 从任一为访问过的节点开始	，</span></span><br><span class="line">	<span class="comment">// value= 0:未访问 1:临时访问 2:永久访问</span></span><br><span class="line">    visit := <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 找到节点集合,即每个节点联通的点，进行深度遍历</span></span><br><span class="line">	vGroup := <span class="keyword">map</span>[<span class="type">int</span>][]<span class="type">int</span>&#123;&#125;</span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> prerequisites &#123;</span><br><span class="line">		vGroup[v[<span class="number">1</span>]] = <span class="built_in">append</span>(vGroup[v[<span class="number">1</span>]], v[<span class="number">0</span>])</span><br><span class="line">	&#125;</span><br><span class="line">	res := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">0</span>)</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; numCourses; i++ &#123;</span><br><span class="line">		<span class="keyword">if</span> visit[i] == <span class="number">0</span> &amp;&amp; !visitOrder(i, &amp;res, vGroup, visit) &#123;</span><br><span class="line">			<span class="comment">// 有环存在</span></span><br><span class="line">			<span class="keyword">return</span> []<span class="type">int</span>&#123;&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 翻转</span></span><br><span class="line">	<span class="keyword">for</span> i, j := <span class="number">0</span>, <span class="built_in">len</span>(res)<span class="number">-1</span>; i &lt; j; i, j = i+<span class="number">1</span>, j<span class="number">-1</span> &#123;</span><br><span class="line">		res[i], res[j] = res[j], res[i]</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 深度遍历未访问的节点</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">visitOrder</span><span class="params">(n <span class="type">int</span>, res *[]<span class="type">int</span>, vGroup <span class="keyword">map</span>[<span class="type">int</span>][]<span class="type">int</span>, visit <span class="keyword">map</span>[<span class="type">int</span>]<span class="type">int</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">	<span class="comment">// 已经访问过，无需再访问</span></span><br><span class="line">	<span class="keyword">if</span> visit[n] == <span class="number">2</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 又访问到临时节点，说明存在环</span></span><br><span class="line">	<span class="keyword">if</span> visit[n] == <span class="number">1</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span> <span class="comment">// 有环存在</span></span><br><span class="line">	&#125;</span><br><span class="line">	visit[n] = <span class="number">1</span> <span class="comment">// 先标记临时节点</span></span><br><span class="line">	<span class="keyword">if</span> nodes, ok := vGroup[n]; ok &#123;</span><br><span class="line">		<span class="keyword">for</span> _, m := <span class="keyword">range</span> nodes &#123;</span><br><span class="line">			<span class="keyword">if</span> !visitOrder(m, res, vGroup, visit) &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	visit[n] = <span class="number">2</span> <span class="comment">// 标记为永久访问几点，并加入结果集</span></span><br><span class="line">	*res = <span class="built_in">append</span>(*res, n)</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-参考链接"><a href="#4-参考链接" class="headerlink" title="4. 参考链接"></a>4. 参考链接</h2><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%8B%93%E6%92%B2%E6%8E%92%E5%BA%8F">拓扑排序维基百科</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+              <a href="/tags/%E8%AF%BE%E7%A8%8B%E8%A1%A8/" rel="tag"># 课程表</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/05/04/completableFuture/" rel="prev" title="java CompletableFuture 源码学习">
+                  <i class="fa fa-angle-left"></i> java CompletableFuture 源码学习
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/05/23/%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF/" rel="next" title="欧拉回路">
+                  欧拉回路 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Crescent</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
