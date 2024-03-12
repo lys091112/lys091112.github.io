@@ -10,6 +10,8 @@ toc: true
 
 我们常用的线程安全的队列主要有BlockingLinkedQueue 、 ConcurrentLinkedQueue, 它俩的主要区别是一个使用了锁 ，一个基于CAS + volatile 实现的无锁队列，本篇我们主要分析ConcurrentLinedQueue的实现原理。
 
+<!-- more -->
+
 
 ## Node 节点
 

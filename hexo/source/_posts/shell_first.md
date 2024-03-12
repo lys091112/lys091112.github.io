@@ -24,6 +24,7 @@ function dkexec {
     fi
 }
 ```
+<!-- more -->
 
 **遇到的问题：**
 

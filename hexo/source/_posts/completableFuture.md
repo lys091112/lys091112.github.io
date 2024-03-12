@@ -10,6 +10,8 @@ toc: true
 CompletableFuture 是继FutuerTask之后，JDK1.8 引入的异步执行框架，可以自动检测触发下一级的关联任务，而不需要像 ``FutureTask`` 那样通过 ``get`` 获取结果后在执行的阻塞方式。
 '
 
+<!-- more -->
+
 ## 1. CompletionStage 接口 
 
 用来表示每个任务执行的一个阶段，通过触发机制，可以在它依赖的任务完成时，执行一些操作和计算 ``CompletableFuture`` 继承自CompletionStage 用来控制类的执行

@@ -30,6 +30,8 @@ toc: true
 
 至此，依赖安装完毕。
 
+<!-- more -->
+
 
 ### 1.2. 开发流程
 
@@ -65,7 +67,7 @@ theme: hexo-theme-next
 
 1. 修改语言设置
 ```
-    在站点配置文件 _config.yml, 修改language: zh-Hans
+    在站点配置文件 _config.yml, 修改language: zh-CN
 ```
 
 2. 添加 ``about`` 页面。
@@ -113,3 +115,7 @@ local_search:
 
   方式一： 通过命令 ``npm ls --depth 0`` 查询hexo缺少的依赖，然后依次安装
   方式二： 由于本地的nap有大版本的更新，就版本的hexo依赖的npm已经消失，此时会出现版本不一致问题，因此用新版本的 hexo init命令生成新的hexo目录文件，然后将文件通过对比拷贝到原有的hexo项目文件中即可
+
+2. deployer not found： git
+
+缺少依赖包： npm install --save hexo-deployer-git

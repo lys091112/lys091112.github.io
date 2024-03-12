@@ -11,10 +11,12 @@ toc: true
 
 在java.util.concurrent包中有很多控制同步和并发的类，其中向ReentrantLock，CountDownLatch 内部实现都依赖与AbstractQueuedSynchronizer（用于控制同步的框架AQS），下面我们来分析独占模式下的原理
 
+
 ## 原理
 
 队列同步器AQS是用来构建锁和其他同步组件的基础框架，内部使用int来表示成员的同步状态，通过内置的FIFO队列来完成资源获取线程的排序工作，其中成员变量包括 内部状态state 、等待队列的对头head(对头是一个空节点,也可以认为是当前持有锁的线程)、等待队列的队尾tail，都是通过volatile修饰，保证在并发过程中对其他线程可见
 
+<!-- more -->
 基本结构：
 ```java
 public abstract class AbstractQueuedSynchronizer
